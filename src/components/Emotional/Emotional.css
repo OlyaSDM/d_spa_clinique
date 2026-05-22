@@ -1,0 +1,82 @@
+@font-face {
+  font-family: 'GT Super';
+  src: url('..//..//assets//GT-Super/GT-Super-Display-Light-Trial.woff2') format('woff2');
+  font-weight: 300; 
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GT Super';
+  src: url('..//..//assets/GT-Super/GT-Super-Display-Light-Italic-Trial.woff2') format('woff2');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+:root {
+    --bg_color: #f8f2ed;
+    --accent: #aac4cb;
+    --accent_bright: #78A3A9;
+    --text_gray: #828988;
+    --text: #403f3f;
+    --white: #fff;
+    --sandy: #e7c9af;
+}
+
+.quote-wrap {
+  text-align: center;
+  padding: 180px 20px;
+  font-family: "GT Super";
+    perspective: 1000px; /* 🔥 ВАЖНО */
+background-color: var(--bg_color);
+}
+
+/* MASK */
+.q-line {
+  overflow: hidden;
+  margin: 0;
+  font-size: clamp(70px, 6vw, 90px);
+  line-height: 0.8;
+    padding-bottom: 10px; /* 🔥 даёт место для выезда */
+
+}
+
+/* IMPORTANT FIX */
+.q-line-inner {
+  display: inline-block;
+  transform: translateY(120%);
+  opacity: 0;
+  will-change: transform, opacity;
+  font-weight: lighter;
+  
+}
+.upp{
+    text-transform: uppercase;
+      color: var(--text);
+
+}
+/* italic */
+.q-line.italic {
+  font-style: italic;
+  font-weight: 100;
+  color: var(--accent_bright);
+}
+.left, .lleft {
+    margin-left: 100px;
+}
+
+
+.deep-1 .q-line-inner {
+  transform-origin: center bottom;
+}
+
+.deep-2 .q-line-inner {
+  transform-origin: center bottom;
+}
+
+.deep-3 .q-line-inner {
+  transform-origin: center bottom;
+}
+
+

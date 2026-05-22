@@ -1,0 +1,86 @@
+:root {
+  --scrollY: 0px;
+}
+
+:root {
+    --bg_color: #f8f2ed;
+    --accent: #aac4cb;
+    --text_gray: #828988;
+    --text: #403f3f;
+}
+
+
+@font-face {
+  font-family: 'GT Super';
+  src: url('/fonts/GT-Super/GT-Super-Display-Light-Trial.woff2') format('woff2');
+  font-weight: 300; 
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GT Super';
+  src: url('/fonts/GT-Super/GT-Super-Display-Light-Italic-Trial.woff2') format('woff2');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* =========================
+   GLOBAL PARALLAX UTIL
+   (можно использовать везде)
+========================= */
+
+.parallax-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+/* базовый слой параллакса */
+.parallax-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  transform: translateY(calc(var(--scrollY) * 0.25));
+  will-change: transform;
+
+  z-index: 0;
+}
+
+/* затемнение (опционально) */
+.parallax-overlay {
+  position: absolute;
+  inset: 0;
+
+  background: radial-gradient(
+    circle at center,
+    rgba(0,0,0,0.1),
+    rgba(0,0,0,0.65)
+  );
+
+  z-index: 1;
+}
+
+/* контент всегда сверху */
+.parallax-content {
+  position: relative;
+  z-index: 2;
+}
+
+.site {
+  opacity: 0;
+  transform: scale(1.02);
+  filter: blur(10px);
+  transition: all 1.2s ease;
+}
+
+.site.revealed {
+  opacity: 1;
+  transform: scale(1);
+  filter: blur(0);
+}

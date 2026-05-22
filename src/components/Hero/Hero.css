@@ -1,0 +1,152 @@
+:root {
+    --bg_color: #f8f2ed;
+    --accent: #aac4cb;
+    --text_gray: #828988;
+    --text: #403f3f;
+}
+
+
+.hero {
+  height: 100vh;
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  overflow: hidden;
+}
+
+.hero.parallax-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: url("../../assets/images/bg.jpg") center/cover no-repeat;
+
+  transform: scale(1.1);
+  will-change: transform;
+
+  z-index: 0;
+}
+
+
+/* overlay */
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+
+  background: radial-gradient(
+    circle at center,
+    rgba(238, 231, 231, 0.1),
+    rgba(209, 206, 206, 0.6)
+  );
+
+  z-index: 1;
+}
+
+/* center */
+
+.hero-center {
+  position: relative;
+  z-index: 2;
+
+  text-align: center;
+}
+
+/* WORD */
+
+.hero-word {
+  display: flex;
+  justify-content: center;
+
+  font-size: clamp(90px, 18vw, 260px);
+  font-weight: 300;
+  letter-spacing: -0.04em;
+}
+
+/* MASK */
+
+.letter-wrap {
+  display: inline-block;
+  overflow: hidden;
+  height: 1em;
+}
+
+/* LETTER */
+
+.letter {
+  display: inline-block;
+
+  color: rgba(255,255,255,0.35);
+
+  transform: translateY(120%);
+  opacity: 0;
+
+  cursor: pointer;
+
+  transition:
+    transform 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 1.2s ease,
+    color 0.4s ease;
+}
+
+/* reveal */
+
+.letter.show {
+  transform: translateY(0%);
+  opacity: 1;
+}
+
+/* hover */
+
+.letter.active,
+.letter:hover {
+  color: white;
+  transform: translateY(-8px);
+}
+
+/* description */
+
+.hero-description {
+  margin-top: 50px;
+
+  max-width: 650px;
+  margin-inline: auto;
+
+  color: white;
+}
+
+.hero-description h3 {
+  font-size: 28px;
+  margin-bottom: 16px;
+  font-weight: 400;
+}
+
+.hero-description p {
+  font-size: 18px;
+  line-height: 1.7;
+  opacity: 0.75;
+}
+
+/* mobile */
+
+@media (max-width: 768px) {
+
+  .hero-word {
+    font-size: 32vw;
+  }
+
+  .hero-description {
+    padding-inline: 24px;
+  }
+
+  .hero-description h3 {
+    font-size: 22px;
+  }
+
+  .hero-description p {
+    font-size: 15px;
+  }
+}

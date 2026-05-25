@@ -180,6 +180,104 @@
   transform: translateY(0);
 }
 
+.hero-btn {
+  margin-top: 40px;
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 14px 38px;
+
+  font-size: 14px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+
+  color: #fff;
+  background: linear-gradient(135deg, #aac4cb, #8fb3ba);
+
+  border: none;
+
+  cursor: pointer;
+
+  /* 💡 IMPORTANT: no constant motion */
+  transform: translateY(0) scale(1);
+
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.10),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+
+  transition:
+    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.5s ease,
+    background 0.5s ease;
+}
+
+.hero-btn:hover {
+  transform: translateY(-5px) scale(1.02);
+
+  box-shadow:
+    0 22px 60px rgba(0, 0, 0, 0.16),
+    0 0 35px rgba(170, 196, 203, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+
+  filter: brightness(1.03);
+}
+
+
+.hero-btn:active {
+  transform: translateY(-2px) scale(0.99);
+  transition: transform 0.15s ease;
+}
+
+.hero-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  border-radius: inherit;
+
+  background: radial-gradient(
+    circle at 30% 20%,
+    rgba(255, 255, 255, 0.25),
+    transparent 60%
+  );
+
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.hero-btn:hover::before {
+  opacity: 1;
+}
+
+
+/* inner glow effect */
+.hero-btn-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(170, 196, 203, 0.35),
+    transparent 70%
+  );
+
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.hero-btn:hover .hero-btn-glow {
+  opacity: 1;
+}
+
+/* click effect */
+.hero-btn:active {
+  transform: translateY(-1px) scale(0.98);
+}
+
 /* mobile */
 
 @media (max-width: 768px) {

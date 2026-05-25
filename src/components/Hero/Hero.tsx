@@ -69,6 +69,10 @@ setTimeout(() => {
           <p className="hero-text">
             Premium beauty & wellness clinic experience
           </p>
+<button className="hero-btn">
+  Book now
+  <span className="hero-btn-light" />
+</button>
         </div>
       </div>
     </section>

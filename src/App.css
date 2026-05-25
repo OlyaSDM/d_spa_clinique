@@ -31,25 +31,16 @@
    (можно использовать везде)
 ========================= */
 
-.parallax-bg {
-  position: relative;
-  overflow: hidden;
-}
-
-/* базовый слой параллакса */
-.parallax-bg::before {
-  content: "";
-  position: absolute;
+.global-bg {
+  position: fixed;
   inset: 0;
 
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
+  background: url("..//src/assets/images/bg.jpg") center/cover no-repeat;
 
-  transform: translateY(calc(var(--scrollY) * 0.25));
+  transform: scale(1.1);
+  z-index: -1;
+
   will-change: transform;
-
-  z-index: 0;
 }
 
 /* затемнение (опционально) */

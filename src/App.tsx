@@ -5,33 +5,45 @@ import Header from "./components/Header/Header";
 import Hero from "./components/Hero/Hero";
 import QuoteReveal from "./components/Emotional/Emotional";
 import Loader from "./components/Loader/Loader";
+import ClinicVideo from "./components/ClinicVideo/ClinicVideo";
 
 import "./App.css";
-import ClinicVideo from "./components/ClinicVideo/ClinicVideo";
 
 export default function App() {
   const [loading, setLoading] = useState(true);
 
-useEffect(() => {
+  useEffect(() => {
   const lenis = new Lenis({
     duration: 1.4,
     lerp: 0.035,
     smoothWheel: true,
     wheelMultiplier: 0.75,
-    touchMultiplier: 1.0,
+    touchMultiplier: 1,
   });
+
+  const bg = document.querySelector(".global-bg") as HTMLElement | null;
 
   let frame: number;
 
   const raf = (time: number) => {
     lenis.raf(time);
+
+    if (bg) {
+      const scroll = lenis.scroll;
+
+      bg.style.transform = `
+        scale(1.15)
+        translateY(${scroll * 0.15}px)
+      `;
+    }
+
     frame = requestAnimationFrame(raf);
   };
 
   frame = requestAnimationFrame(raf);
 
   return () => {
-    cancelAnimationFrame(frame);
+    if (frame) cancelAnimationFrame(frame);
     lenis.destroy();
   };
 }, []);
@@ -43,6 +55,9 @@ useEffect(() => {
 
   return (
     <>
+      {/* 🌄 GLOBAL BACKGROUND LAYER */}
+      <div className="global-bg" />
+
       {loading ? (
         <Loader onFinish={() => setLoading(false)} />
       ) : (

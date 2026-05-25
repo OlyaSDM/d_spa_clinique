@@ -7,6 +7,7 @@ import QuoteReveal from "./components/Emotional/Emotional";
 import Loader from "./components/Loader/Loader";
 
 import "./App.css";
+import ClinicVideo from "./components/ClinicVideo/ClinicVideo";
 
 export default function App() {
   const [loading, setLoading] = useState(true);
@@ -51,7 +52,7 @@ useEffect(() => {
           <main>
             <Hero />
             <QuoteReveal />
-            <Hero />
+            <ClinicVideo />
           </main>
         </>
       )}

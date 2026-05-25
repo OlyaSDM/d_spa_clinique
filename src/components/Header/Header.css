@@ -65,8 +65,9 @@
   flex-shrink: 0;
 }
 .logo img {
-  height: 140px  !important;
+  height: 130px  !important;
   width: auto;
+  margin-top: -20px;
     display: block;
 
 }

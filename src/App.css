@@ -33,14 +33,25 @@
 
 .global-bg {
   position: fixed;
+  height: 100vh;
+  inset: -10vh -10vw;
+
+  background: url("./assets/images/bg.jpg") center/cover no-repeat;
+background-size: cover;
+background-position: center;
+  transform: scale(1.2);
+  will-change: transform;
+
+  z-index: -1;
+}
+
+.global-bg::after {
+  content: "";
+  position: absolute;
   inset: 0;
 
-  background: url("..//src/assets/images/bg.jpg") center/cover no-repeat;
-
-  transform: scale(1.1);
-  z-index: -1;
-
-  will-change: transform;
+  background: inherit;
+  transform: scale(1.05);
 }
 
 /* затемнение (опционально) */

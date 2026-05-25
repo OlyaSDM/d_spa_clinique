@@ -68,6 +68,10 @@ export default function App() {
             <Hero />
             <QuoteReveal />
             <ClinicVideo />
+                        <QuoteReveal />
+
+                        <ClinicVideo />
+
           </main>
         </>
       )}

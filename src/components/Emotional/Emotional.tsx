@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import "./Emotional.css";
 
 export default function QuoteReveal() {
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const el = ref.current;
@@ -21,7 +21,6 @@ export default function QuoteReveal() {
       const rect = el.getBoundingClientRect();
       const vh = window.innerHeight;
 
-      // ⚡ КОРОТКОЕ SCROLL-ОКНО (быстрое появление)
       const start = vh * 0.85;
       const end = vh * 0.25;
 
@@ -30,29 +29,29 @@ export default function QuoteReveal() {
       target = clamp(progress);
     };
 
-const animate = () => {
-  current += (target - current) * 0.18;
+    const animate = () => {
+      // smooth follow
+      current += (target - current) * 0.15;
 
-  const vh = window.innerHeight;
+      lines.forEach((line, i) => {
+        const step = 0.25;
 
-  lines.forEach((line, i) => {
-    const rect = line.parentElement!.getBoundingClientRect();
+        const start = i * step;
+        const end = start + 0.6;
 
-    // 🔥 локальный progress КАЖДОЙ строки
-    const raw = 1 - rect.top / vh;
+        // ✔ FIX: используем current, а не clamped
+        const p = (current - start) / (end - start);
 
-    const p = Math.max(0, Math.min(1, raw - i * 0.12));
+        const ease = Math.max(0, Math.min(1, Math.pow(p, 4.85)));
 
-    const ease = p * p * (3 - 2 * p);
+        const y = (1 - ease) * 60;
 
-    const y = (1 - ease) * 120;
+        line.style.transform = `translateY(${y}%)`;
+        line.style.opacity = `${ease}`;
+      });
 
-    line.style.transform = `translateY(${y}%)`;
-    line.style.opacity = `${ease}`;
-  });
-
-  requestAnimationFrame(animate);
-};
+      requestAnimationFrame(animate);
+    };
 
     window.addEventListener("scroll", onScroll, { passive: true });
 
@@ -77,7 +76,7 @@ const animate = () => {
       </h3>
 
       <h3 className="q-line lleft">
-        <span className="q-line-inner upp">
+        <span className="q-line-inner upp p">
           care and softness
         </span>
       </h3>

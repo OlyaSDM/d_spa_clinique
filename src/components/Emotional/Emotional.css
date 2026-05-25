@@ -24,6 +24,8 @@
     --sandy: #e7c9af;
 }
 
+
+
 .quote-wrap {
   text-align: center;
   padding: 180px 20px;
@@ -56,6 +58,10 @@ background-color: var(--bg_color);
       color: var(--text);
 
 }
+
+.p {
+  margin-bottom: 20px;
+}
 /* italic */
 .q-line.italic {
   font-style: italic;
@@ -79,4 +85,40 @@ background-color: var(--bg_color);
   transform-origin: center bottom;
 }
 
+@media (max-width: 768px) {
 
+  .quote-wrap {
+    padding: 120px 16px;
+        text-align: center;
+
+  }
+
+  .q-line {
+    font-size: clamp(34px, 10vw, 54px);
+    line-height: 0.95;
+    padding-bottom: 6px;
+        overflow: visible;
+
+  }
+
+  .q-line-inner {
+    transform: translateY(110%);
+        display: block;
+
+  }
+
+  /* убираем сильный сдвиг влево */
+  .left,
+  .lleft {
+    margin-left: 0;
+  }
+
+  /* чуть меньше дистанция между строками */
+  .p {
+    margin-bottom: 12px;
+  }
+
+  .upp {
+    letter-spacing: 0.02em;
+  }
+}

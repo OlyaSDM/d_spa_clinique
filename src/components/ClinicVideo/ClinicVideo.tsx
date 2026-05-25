@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import "./ClinicVideo.css";
 
 const slides = [
@@ -17,41 +17,29 @@ const slides = [
 ];
 
 export default function ClinicVideo() {
-  const ref = useRef<HTMLElementTagNameMap["section"] | null>(null);
   const [active, setActive] = useState(0);
+  const [visible, setVisible] = useState(true);
 
-  useEffect(() => {
-  const handleScroll = () => {
-    const el = ref.current;
-    if (!el) return;
+useEffect(() => {
+  const interval = setInterval(() => {
+    setVisible(false);
 
-    const scrollTop = window.scrollY;
-    const elementTop = el.offsetTop;
-    const elementHeight = el.offsetHeight;
-    const windowHeight = window.innerHeight;
+    setTimeout(() => {
+      setActive((prev) => (prev + 1) % slides.length);
+      setVisible(true);
+    }, 500); // быстрее смена внутри fade
+  }, 6000); // ⬅️ было 4000, стало медленнее и премиальнее
 
-    const progress =
-      (scrollTop - elementTop + windowHeight) /
-      (elementHeight + windowHeight);
-
-    const clamped = Math.max(0, Math.min(1, progress));
-
-    const index = Math.floor(clamped * slides.length);
-
-    setActive(Math.min(slides.length - 1, index));
-  };
-
-  window.addEventListener("scroll", handleScroll, { passive: true });
-  handleScroll();
-
-  return () => window.removeEventListener("scroll", handleScroll);
+  return () => clearInterval(interval);
 }, []);
 
   return (
-    <section ref={ref} className="experience">
+    <section className="experience">
 
+      {/* LEFT */}
       <div className="experience-left">
-        <div key={active} className="experience-text show">
+
+        <div className={`experience-text ${visible ? "show" : ""}`}>
 
           <h2>
             Experience <br />
@@ -61,9 +49,12 @@ export default function ClinicVideo() {
           <p>{slides[active].text}</p>
 
         </div>
+
       </div>
 
+      {/* RIGHT */}
       <div className="experience-right">
+
         <video
           autoPlay
           muted
@@ -71,12 +62,15 @@ export default function ClinicVideo() {
           playsInline
           className="experience-video"
         >
-          <source src="/video/video.MP4" type="video/mp4" />
+          <source src="public/video/video.MP4" type="video/mp4" />
         </video>
 
-        <div className="video-overlay">
-          <button className="play-btn">▶</button>
-        </div>
+        {/* <div className="video-overlay">
+          <button className="play-btn">
+            ▶
+          </button>
+        </div> */}
+
       </div>
 
     </section>

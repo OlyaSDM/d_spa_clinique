@@ -1,0 +1,188 @@
+.about {
+  position: relative;
+
+  min-height: 100vh;
+
+  background: #f4f1ed;
+
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 60px;
+}
+
+/* =========================
+   IMAGE WRAP (REVEAL + REVERSE SCROLL)
+========================= */
+
+.about-image-wrap {
+  position: relative;
+
+  width: 42vw;
+  height: 78vh;
+
+  overflow: hidden;
+
+  /* стартовое состояние (закрыто) */
+  clip-path: inset(0 100% 0 0);
+
+  transform: scale(1.12) translateY(20px);
+
+  filter: blur(10px);
+
+  will-change: transform, clip-path, filter;
+
+  transition:
+    clip-path 1.6s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1.8s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 1.4s ease;
+}
+
+/* открыто */
+.about-image-wrap.show {
+  clip-path: inset(0 0 0 0);
+  transform: scale(1) translateY(0);
+  filter: blur(0);
+}
+
+/* reverse scroll (когда уходишь из секции) */
+.about-image-wrap:not(.show) {
+  transform: scale(1.08) translateY(25px);
+  filter: blur(10px);
+}
+
+/* =========================
+   IMAGE INNER MOTION (LUXURY LIVING)
+========================= */
+
+.about-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  transform: scale(1.25);
+
+  transition: transform 3.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* вход */
+.about-image-wrap.show .about-image {
+  transform: scale(1.05);
+}
+
+/* “живое дыхание” только когда видно */
+.about-image-wrap.show .about-image {
+  animation: imageFloat 12s ease-in-out infinite alternate;
+}
+
+@keyframes imageFloat {
+  0% {
+    transform: scale(1.05) translateY(0px);
+  }
+
+  50% {
+    transform: scale(1.07) translateY(-12px);
+  }
+
+  100% {
+    transform: scale(1.05) translateY(0px);
+  }
+}
+
+/* =========================
+   TEXT (SCROLL REVEAL + REVERSE)
+========================= */
+
+.about-content {
+  position: absolute;
+
+  left: 8%;
+  bottom: 12%;
+
+  z-index: 5;
+
+  opacity: 0;
+  transform: translateY(40px);
+
+  will-change: transform, opacity;
+
+  transition:
+    opacity 1.2s ease,
+    transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* visible */
+.about-content.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* reverse state */
+.about-content:not(.show) {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+/* =========================
+   TEXT STYLES
+========================= */
+
+.about-sub {
+  margin-bottom: 24px;
+
+  font-size: 14px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+
+  color: rgba(47, 47, 47, 0.7);
+}
+
+.about-title {
+  font-size: clamp(90px, 11vw, 220px);
+
+  line-height: 0.9;
+  font-weight: 300;
+
+  letter-spacing: -0.06em;
+
+  color: #2f2f2f;
+}
+
+.about-title span {
+  color: #c79f84;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 900px) {
+
+  .about {
+    min-height: 100svh;
+    padding: 24px;
+    align-items: flex-end;
+  }
+
+  .about-image-wrap {
+    width: 100%;
+    height: 72vh;
+  }
+
+  .about-content {
+    left: 24px;
+    bottom: 48px;
+  }
+
+  .about-title {
+    font-size: clamp(56px, 18vw, 110px);
+  }
+
+  .about-sub {
+    font-size: 11px;
+    letter-spacing: 0.22em;
+  }
+}

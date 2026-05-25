@@ -70,6 +70,7 @@ export default function App() {
             <QuoteReveal />
             <ClinicVideo />
 <About />
+            <QuoteReveal />
 
           </main>
         </>

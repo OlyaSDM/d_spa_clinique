@@ -54,7 +54,7 @@
 }
 
 .header.scrolled {
-  background-color: var(--accent);
+  background-color: var(--accent_bright);
   backdrop-filter: blur(18px);
 }
 

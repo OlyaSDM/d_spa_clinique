@@ -32,14 +32,22 @@ export default function About() {
       </div>
 
       <div className={`about-content ${visible ? "show" : ""}`}>
-        <p className="about-sub">
-          Licensed Esthetician & Massage Therapist
-        </p>
+        
 
         <h1 className="about-title">
           Diana <br />
           <span>Tyurina</span>
         </h1>
+        <p className="about-sub">
+          Licensed Esthetician <br></br>
+          & Massage Therapist
+        </p>
+        <p className="about-bio">
+  Licensed esthetician & massage therapist based in Los Angeles.
+  Focused on natural skin renewal, relaxation therapy and holistic care.  Focused on natural skin renewal, relaxation therapy and holistic care.
+  Focused on natural skin renewal, relaxation therapy and holistic care.
+
+</p>
       </div>
 
     </section>

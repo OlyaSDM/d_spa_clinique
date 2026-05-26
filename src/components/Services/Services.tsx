@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./Services.css";
 
 type Service = {
@@ -9,69 +9,85 @@ type Service = {
 
 const services: Service[] = [
   {
-    title: "Facial Care",
-    desc: "Deep skin renewal & hydration",
-    img: "/img/facial.jpg",
+    title: "Body Treatments",
+    desc: "Full body renewal & relaxation",
+    img: "/images/t.webp",
   },
   {
-    title: "Massage",
-    desc: "Relaxation therapy rituals",
-    img: "/img/massage.jpg",
+    title: "Face Massages",
+    desc: "Lifting rituals & deep release",
+    img: "/images/m.webp",
   },
   {
-    title: "Laser",
-    desc: "Advanced skin correction",
-    img: "/img/laser.jpg",
-  },
-  {
-    title: "Body Care",
-    desc: "Full body regeneration",
-    img: "/img/body.jpg",
+    title: "Facials",
+    desc: "Advanced skin hydration & glow",
+    img: "/images/f.webp",
   },
 ];
 
 export default function Services() {
   const sectionRef = useRef<HTMLElement | null>(null);
+  const gridRef = useRef<HTMLDivElement | null>(null);
 
   const [cursor, setCursor] = useState({ x: 0, y: 0 });
-  const [active, setActive] = useState(false);
+  const [cursorActive, setCursorActive] = useState(false);
+  const [visible, setVisible] = useState(false);
 
+  /* ================= CURSOR ================= */
   useEffect(() => {
     const section = sectionRef.current;
     if (!section) return;
 
-    const move = (e: MouseEvent) => {
+    const handleMove = (e: MouseEvent) => {
       const rect = section.getBoundingClientRect();
 
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
 
-      const isInside =
-        x >= 0 && y >= 0 && x <= rect.width && y <= rect.height;
+      const inside =
+        x >= 0 &&
+        y >= 0 &&
+        x <= rect.width &&
+        y <= rect.height;
 
-      if (!isInside) {
-        setActive(false);
+      if (!inside) {
+        setCursorActive(false);
         return;
       }
 
       setCursor({ x: e.clientX, y: e.clientY });
-      setActive(true);
+      setCursorActive(true);
     };
 
-    section.addEventListener("mousemove", move);
+    section.addEventListener("mousemove", handleMove);
+    return () => section.removeEventListener("mousemove", handleMove);
+  }, []);
 
-    return () => section.removeEventListener("mousemove", move);
+  /* ================= REVEAL ================= */
+  useEffect(() => {
+    const grid = gridRef.current;
+    if (!grid) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setVisible(entry.isIntersecting);
+      },
+      { threshold: 0.25 }
+    );
+
+    observer.observe(grid);
+    return () => observer.disconnect();
   }, []);
 
   return (
     <section
-      className="services-wrapper"
       ref={sectionRef}
-      onMouseLeave={() => setActive(false)}
+      className="services-wrapper"
+      onMouseLeave={() => setCursorActive(false)}
     >
-      {/* CUSTOM CURSOR */}
+      {/* CURSOR */}
       <div
-        className={`custom-cursor ${active ? "active" : ""}`}
+        className={`custom-cursor ${cursorActive ? "active" : ""}`}
         style={{
           transform: `translate(${cursor.x}px, ${cursor.y}px) translate(-50%, -50%)`,
         }}
@@ -79,17 +95,28 @@ export default function Services() {
         <span>VIEW</span>
       </div>
 
-      <h2 className="services-title">Services</h2>
+      {/* TITLE */}
+      <div className={`services-title-mask ${visible ? "open" : ""}`}>
+        <h2 className="services-title">Services</h2>
+      </div>
 
-      <div className="services-grid">
+      {/* GRID */}
+      <div ref={gridRef} className="services-grid">
         {services.map((item, i) => (
           <div
             key={i}
-            className="service-tile"
-            style={{ "--img": `url(${item.img})` } as React.CSSProperties}
+            className={`service-tile ${visible ? "visible" : ""}`}
+            style={
+              {
+                "--img": `url(${item.img})`,
+                transitionDelay: `${i * 0.15}s`,
+              } as React.CSSProperties
+            }
           >
             <h3>{item.title}</h3>
             <p>{item.desc}</p>
+
+            <button className="service-more">More</button>
           </div>
         ))}
       </div>

@@ -1,48 +1,50 @@
-/* WRAPPER */
-.services-wrapper {
-  padding: 80px 8vw 0;
-  background-color: var(--bg_color);
-  margin-top: 180px;
+
+:root {
+  --bg_color: #f8f2ed;
+  --text: #403f3f;
+  --sandy: #e7c9af;
 }
 
-/* TITLE */
-.services-title {
+/* ================= WRAPPER ================= */
+.services-wrapper {
+  padding: 40px 8vw 0;
+  background: var(--bg_color);
+  margin-top: 180px;
+  position: relative;
+}
+
+/* ================= TITLE MASK ================= */
+.services-title-mask {
+  overflow: hidden;
   text-align: center;
-  font-size: clamp(70px, 11vw, 90px);
-  line-height: 0.9;
+}
+
+.services-title {
+  font-size: clamp(70px, 11vw, 130px);
   font-weight: 300;
   letter-spacing: -0.06em;
-  color: var(--text);
   font-family: "GT Super";
+  color: var(--text);
 
   margin-bottom: 20px;
 
-  opacity: 0;
-  transform: translateY(30px);
-  filter: blur(10px);
-
-  animation: titleReveal 1.2s ease forwards;
+  transform: translateY(120%);
+  transition: transform 2.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-@keyframes titleReveal {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-    filter: blur(0);
-  }
+.services-title-mask.open .services-title {
+  transform: translateY(0%);
 }
 
-/* GRID */
+/* ================= GRID ================= */
 .services-grid {
-  margin-top: 20px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 28px;
-  padding: 120px 8vw;
-  min-height: 100vh;
+  gap: 22px;
+  padding: 60px 0 100px;
 }
 
-/* CARD */
+/* ================= CARD ================= */
 .service-tile {
   position: relative;
   overflow: hidden;
@@ -53,12 +55,23 @@
   flex-direction: column;
   justify-content: flex-end;
 
-  color: white;
   cursor: pointer;
 
-  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  opacity: 0;
+  transform: translateY(90px);
+
+  transition:
+    opacity 1.6s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+.service-tile.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ================= IMAGE ================= */
+/* ================= IMAGE (SOFT CINEMATIC ZOOM) ================= */
 .service-tile::before {
   content: "";
   position: absolute;
@@ -68,33 +81,110 @@
   background-size: cover;
   background-position: center;
 
-  transform: scale(1.05);
-  transition: transform 0.8s ease;
+  transform: scale(1.08);
+  transition: transform 2.2s cubic-bezier(0.16, 1, 0.3, 1);
+
+  z-index: 0;
+  will-change: transform;
 }
 
+/* стартовый reveal zoom */
+.service-tile.visible::before {
+  transform: scale(1.02);
+}
+
+/* hover zoom (мягкий, не дерганый) */
+.service-tile:hover::before {
+  transform: scale(1.12);
+}
+
+
+
+/* ================= TEXT ================= */
+.service-tile h3 {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 300;
+  margin-bottom: -6px;
+  letter-spacing: -0.02em;
+
+  position: relative;
+  z-index: 2;
+  color: #fff;
+}
+
+.service-tile p {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 300;
+  margin-bottom: 100px;
+
+  position: relative;
+  z-index: 2;
+  color: #fff;
+  opacity: 0.85;
+}
+
+/* ================= BUTTON (ALWAYS VISIBLE) ================= */
+.service-more {
+  position: absolute;
+  bottom: 48px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  padding: 10px 26px;
+
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+
+  border: 1px solid rgba(255,255,255,0.25);
+  backdrop-filter: blur(10px);
+
+  cursor: pointer;
+  z-index: 3;
+
+  opacity: 1;
+  transition: 0.4s ease;
+}
 .service-tile::after {
   content: "";
   position: absolute;
   inset: 0;
 
+  /* base dark layer */
   background: linear-gradient(
     to top,
-    rgba(0, 0, 0, 0.45),
-    rgba(0, 0, 0, 0.05)
+    rgba(0,0,0,0.72) 0%,
+    rgba(0,0,0,0.35) 75%,
+    rgba(0,0,0,0.10) 100%
+  );
+
+  z-index: 1;
+
+  transition: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* hover = EVEN deeper cinematic feel */
+.service-tile:hover::after {
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.82) 0%,
+    rgba(0,0,0,0.45) 45%,
+    rgba(0,0,0,0.18) 100%
   );
 }
 
-.service-tile:hover {
-  transform: translateY(-8px) scale(1.03);
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.12);
+.service-tile:hover .service-more {
+  background: rgba(255, 255, 255, 0.22);
+  transform: translateX(-50%) scale(1.05);
 }
 
-.service-tile:hover::before {
-  transform: scale(1.15);
-}
 
-/* ===== CURSOR ===== */
-
+/* ================= CURSOR ================= */
 .custom-cursor {
   position: fixed;
   top: 0;
@@ -104,7 +194,7 @@
   height: 30px;
   border-radius: 50%;
 
-  background-color: var(--sandy);
+  background: var(--sandy);
 
   display: flex;
   align-items: center;
@@ -116,19 +206,16 @@
   opacity: 0;
   transform: scale(0.3);
 
-  transition: transform 0.2s ease, opacity 0.2s ease;
+  transition: transform 0.25s ease, opacity 0.25s ease;
 }
 
-/* ACTIVE STATE */
 .custom-cursor.active {
   width: 80px;
   height: 80px;
-
   opacity: 1;
   transform: scale(1);
 }
 
-/* TEXT */
 .custom-cursor span {
   font-size: 14px;
   font-weight: 600;

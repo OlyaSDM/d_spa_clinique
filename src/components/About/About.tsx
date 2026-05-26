@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import "./About.css";
-import about from "../../assets/images/Diana.jpg";
+import about from "..//..//..//public/images/Diana.jpg";
 
 export default function About() {
   const [visible, setVisible] = useState(false);

@@ -49,7 +49,7 @@ setTimeout(() => {
   const word = "DSPA";
 
   return (
-    <section className="hero parallax-bg" ref={heroRef}>
+    <section className="  hero parallax-bg" ref={heroRef}>
       <div className="hero-overlay"></div>
 
       <div className="hero-center">

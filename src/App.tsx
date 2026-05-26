@@ -9,6 +9,7 @@ import ClinicVideo from "./components/ClinicVideo/ClinicVideo";
 
 import "./App.css";
 import About from "./components/About/About";
+import Services from "./components/Services/Services";
 
 export default function App() {
   const [loading, setLoading] = useState(true);
@@ -70,7 +71,8 @@ export default function App() {
             <QuoteReveal />
             <ClinicVideo />
 <About />
-            <QuoteReveal />
+<Services />
+
 
           </main>
         </>

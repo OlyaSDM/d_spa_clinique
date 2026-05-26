@@ -34,7 +34,7 @@ useEffect(() => {
 }, []);
 
   return (
-    <section className="experience">
+    <section className=" panel experience">
 
       {/* LEFT */}
       <div className="experience-left">

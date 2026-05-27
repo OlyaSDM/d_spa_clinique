@@ -83,7 +83,7 @@
   height: 100vh;
   inset: -10vh -10vw;
 
-  background: url("..//public/images/bg.jpg") center/cover no-repeat;
+  background: url("/images/bg.jpg") center/cover no-repeat;
 background-size: cover;
 background-position: center;
   transform: scale(1.2);

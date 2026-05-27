@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "./Header.css";
-import logo from "../../assets/logo/logo.png";
+import logo from "../../assets/logo/logo_white.png";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);

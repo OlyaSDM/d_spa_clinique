@@ -28,13 +28,15 @@
   font-family: 'GT Super';
 }
 
+/* =========================
+   SECTION
+========================= */
+
 .about {
   position: relative;
-margin-top: 180px;
+  margin-top: 180px;
   min-height: 100vh;
-
   background: #f4f1ed;
-
   overflow: hidden;
 
   display: flex;
@@ -45,22 +47,17 @@ margin-top: 180px;
 }
 
 /* =========================
-   IMAGE WRAP (REVEAL + REVERSE SCROLL)
+   IMAGE
 ========================= */
 
 .about-image-wrap {
   position: relative;
-
   width: 42vw;
   height: 78vh;
-
   overflow: hidden;
 
-  /* стартовое состояние (закрыто) */
   clip-path: inset(0 100% 0 0);
-
   transform: scale(1.12) translateY(20px);
-
   filter: blur(10px);
 
   will-change: transform, clip-path, filter;
@@ -71,114 +68,128 @@ margin-top: 180px;
     filter 1.4s ease;
 }
 
-/* открыто */
 .about-image-wrap.show {
   clip-path: inset(0 0 0 0);
   transform: scale(1) translateY(0);
   filter: blur(0);
 }
 
-/* reverse scroll (когда уходишь из секции) */
-.about-image-wrap:not(.show) {
-  transform: scale(1.08) translateY(25px);
-  filter: blur(10px);
-}
-
 /* =========================
-   IMAGE INNER MOTION (LUXURY LIVING)
+   IMAGE INNER
 ========================= */
 
 .about-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-
   transform: scale(1.25);
-
   transition: transform 3.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* вход */
 .about-image-wrap.show .about-image {
   transform: scale(1.05);
-}
-
-/* “живое дыхание” только когда видно */
-.about-image-wrap.show .about-image {
   animation: imageFloat 12s ease-in-out infinite alternate;
 }
 
 @keyframes imageFloat {
-  0% {
-    transform: scale(1.05) translateY(0px);
-  }
-
-  50% {
-    transform: scale(1.07) translateY(-12px);
-  }
-
-  100% {
-    transform: scale(1.05) translateY(0px);
-  }
+  0% { transform: scale(1.05) translateY(0px); }
+  50% { transform: scale(1.07) translateY(-12px); }
+  100% { transform: scale(1.05) translateY(0px); }
 }
 
 /* =========================
-   TEXT (SCROLL REVEAL + REVERSE)
+   TEXT SYSTEM (SERVICES STYLE)
+========================= */
+
+/* =========================
+   TEXT SYSTEM (WORKING REVERSE)
 ========================= */
 
 .about-content {
   position: absolute;
-
   left: 8%;
   bottom: 4%;
-  font-family: 'GT Super';
-
   z-index: 5;
+}
 
+/* MASK */
+.about-mask {
+  overflow: hidden;
+}
+
+/* BASE STATE (HIDDEN) */
+.about-title,
+.about-sub,
+.about-bio {
+  transform: translateY(120%);
   opacity: 0;
-  transform: translateY(40px);
 
   will-change: transform, opacity;
 
   transition:
-    opacity 1.2s ease,
-    transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+    transform 1.8s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 1.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* visible */
-.about-content.show {
+/* VISIBLE STATE */
+.about-content.show .about-title,
+.about-content.show .about-sub,
+.about-content.show .about-bio {
+  transform: translateY(0%);
   opacity: 1;
-  transform: translateY(0);
 }
 
-/* reverse state */
-.about-content:not(.show) {
-  opacity: 0;
-  transform: translateY(40px);
+/* STAGGER (IMPORTANT: only on ENTER, not EXIT glitchy) */
+.about-mask:nth-child(1) .about-title {
+  transition-delay: 0s;
+}
+
+.about-mask:nth-child(2) .about-sub {
+  transition-delay: 0.12s;
+}
+
+.about-mask:nth-child(3) .about-bio {
+  transition-delay: 0.24s;
+}
+
+/* IMPORTANT: RESET DELAY ON EXIT */
+.about-content:not(.show) .about-title,
+.about-content:not(.show) .about-sub,
+.about-content:not(.show) .about-bio {
+  transition-delay: 0s;
+}
+/* STAGGER (SERVICES LOGIC) */
+.about-mask:nth-child(1) .about-title {
+  transition-delay: 0s;
+}
+
+.about-mask:nth-child(2) .about-sub {
+  transition-delay: 0.15s;
+}
+
+.about-mask:nth-child(3) .about-bio {
+  transition-delay: 0.3s;
 }
 
 /* =========================
-   TEXT STYLES
+   TYPO
 ========================= */
 
 .about-sub {
   margin-bottom: 14px;
-margin-top: 40px;
+  margin-top: 40px;
   font-size: 22px;
   letter-spacing: 0.28em;
   text-transform: uppercase;
-
   color: var(--text);
 }
 
 .about-title {
   font-size: clamp(90px, 11vw, 180px);
-
   line-height: 0.9;
   font-weight: 300;
-margin-bottom: 12px;
+  margin-bottom: 12px;
   letter-spacing: -0.06em;
-
   color: #2f2f2f;
 }
 
@@ -188,29 +199,13 @@ margin-bottom: 12px;
 
 .about-bio {
   margin-top: 8px;
-
   max-width: 860px;
-
   font-size: 18px;
   line-height: 1.6;
-
   color: rgba(47, 47, 47, 0.65);
-
   letter-spacing: 0.01em;
-
-  opacity: 0;
-
-  transform: translateY(10px);
-
-  transition:
-    opacity 1.2s ease 1s,
-    transform 1.2s ease 1s;
 }
 
-.about-content.show .about-bio {
-  opacity: 1;
-  transform: translateY(0);
-}
 /* =========================
    MOBILE
 ========================= */
@@ -220,85 +215,34 @@ margin-bottom: 12px;
   .about {
     max-height: 40svh;
     padding: 0 20px 60px 20px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
-
-  /* =========================
-     IMAGE
-  ========================= */
 
   .about-image-wrap {
     width: 100%;
     height: 58svh;
-
-    position: relative;
   }
-
-  /* =========================
-     TEXT OVERLAY (КАК В EVOKER)
-  ========================= */
 
   .about-content {
-    position: absolute;
-
     left: 48px;
     right: 18px;
-
-  top: 64%;
-  z-index: 5;
-
-    text-align: left;
-
-    /* ключевой эффект — “заходит на фото” */
-    transform: translateY(30px);
+    top: 64%;
   }
-
-  .about-content.show {
-    transform: translateY(0);
-  }
-
-  /* =========================
-     SUB (маленький верхний слой)
-  ========================= */
 
   .about-sub {
     font-size: 10px;
     letter-spacing: 0.26em;
-
     margin-bottom: 10px;
-
-    color: rgba(47, 47, 47, 0.7);
   }
-
-  /* =========================
-     NAME (ГЛАВНЫЙ ЭФФЕКТ)
-  ========================= */
 
   .about-title {
     font-size: clamp(82px, 14vw, 146px);
     line-height: 0.9;
-margin-top: 40px;
-    /* ВАЖНО: даём “въезд на фото” */
-    transform: translateY(10px);
+    margin-top: 40px;
   }
-
-  .about-content.show .about-title {
-    transform: translateY(0);
-  }
-
-  /* =========================
-     BIO — очень лёгкий (не конкурирует)
-  ========================= */
 
   .about-bio {
     font-size: 14px;
     line-height: 1.4;
-
     max-width: 90%;
-
-    color: rgba(47, 47, 47, 0.65);
   }
 }

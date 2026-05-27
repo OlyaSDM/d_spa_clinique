@@ -1,119 +1,119 @@
 @font-face {
-  font-family: 'GT Super';
-  src: url('..//..//assets//GT-Super/GT-Super-Display-Light-Trial.woff2') format('woff2');
-  font-weight: 300; 
+  font-family: "GT Super";
+  src: url("../../assets/GT-Super/GT-Super-Display-Light-Trial.woff2")
+    format("woff2");
+
+  font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'GT Super';
-  src: url('..//..//assets/GT-Super/GT-Super-Display-Light-Italic-Trial.woff2') format('woff2');
+  font-family: "GT Super";
+  src: url("../../assets/GT-Super/GT-Super-Display-Light-Italic-Trial.woff2")
+    format("woff2");
+
   font-weight: 300;
   font-style: italic;
   font-display: swap;
 }
 
 :root {
-    --bg_color: #f8f2ed;
-    --accent: #aac4cb;
-    --accent_bright: #78A3A9;
-    --text_gray: #828988;
-    --text: #403f3f;
-    --white: #fff;
-    --sandy: #e7c9af;
+  --bg_color: #f8f2ed;
+  --accent: #aac4cb;
+  --accent_bright: #78a3a9;
+  --text_gray: #828988;
+  --text: #403f3f;
+  --white: #fff;
+  --sandy: #e7c9af;
 }
 
-
+/* ================= WRAPPER ================= */
 
 .quote-wrap {
   text-align: center;
   padding: 180px 20px;
   font-family: "GT Super";
-    perspective: 1000px; /* 🔥 ВАЖНО */
-background-color: var(--bg_color);
+  background-color: var(--bg_color);
+
+  perspective: 1000px;
 }
 
-/* MASK */
+/* ================= LINE ================= */
+
 .q-line {
   overflow: hidden;
+  position: relative;
   margin: 0;
-  font-size: clamp(70px, 6vw, 90px);
-  line-height: 0.8;
-    padding-bottom: 10px; /* 🔥 даёт место для выезда */
-
+  font-weight: 300;
+  font-size: clamp(70px, 6vw, 80px);
+  line-height: 0.95;
+  padding-bottom: 10px;
 }
 
-/* IMPORTANT FIX */
 .q-line-inner {
   display: inline-block;
-  transform: translateY(120%);
-  opacity: 0;
-  will-change: transform, opacity;
-  font-weight: lighter;
-  
-}
-.upp{
-    text-transform: uppercase;
-      color: var(--text);
 
+  transform: translate3d(0, 140%, 0);
+
+  will-change: transform;
+
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+
+  transition: transform 1.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.q-line.visible .q-line-inner {
+  transform: translate3d(0, 0, 0);
+}
+
+/* ================= MODIFIERS ================= */
+
+.upp {
+  text-transform: uppercase;
+  color: var(--text);
 }
 
 .p {
   margin-bottom: 20px;
 }
-/* italic */
+
 .q-line.italic {
   font-style: italic;
   font-weight: 100;
   color: var(--accent_bright);
 }
-.left, .lleft {
-    margin-left: 100px;
+
+.left,
+.lleft {
+  margin-left: 100px;
 }
 
-
-.deep-1 .q-line-inner {
-  transform-origin: center bottom;
-}
-
-.deep-2 .q-line-inner {
-  transform-origin: center bottom;
-}
-
-.deep-3 .q-line-inner {
-  transform-origin: center bottom;
-}
+/* ================= MOBILE ================= */
 
 @media (max-width: 768px) {
-
   .quote-wrap {
     padding: 120px 16px;
-        text-align: center;
-
+    text-align: center;
   }
 
   .q-line {
     font-size: clamp(34px, 10vw, 54px);
     line-height: 0.95;
-    padding-bottom: 6px;
-        overflow: visible;
 
+    padding-bottom: 6px;
   }
 
   .q-line-inner {
-    transform: translateY(110%);
-        display: block;
-
+    display: block;
   }
 
-  /* убираем сильный сдвиг влево */
   .left,
   .lleft {
     margin-left: 0;
   }
 
-  /* чуть меньше дистанция между строками */
   .p {
     margin-bottom: 12px;
   }

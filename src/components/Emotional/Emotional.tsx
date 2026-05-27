@@ -9,7 +9,7 @@ export default function QuoteReveal() {
     if (!el) return;
 
     const lines = Array.from(
-      el.querySelectorAll<HTMLElement>(".q-line-inner")
+      el.querySelectorAll<HTMLElement>(".q-line")
     );
 
     let current = 0;
@@ -21,33 +21,44 @@ export default function QuoteReveal() {
       const rect = el.getBoundingClientRect();
       const vh = window.innerHeight;
 
-      const start = vh * 0.85;
+      const start = vh * 0.9;
       const end = vh * 0.25;
 
       const progress = (start - rect.top) / (start - end);
-
       target = clamp(progress);
     };
 
     const animate = () => {
-      // smooth follow
-      current += (target - current) * 0.15;
+      current += (target - current) * 0.12;
 
       lines.forEach((line, i) => {
-        const step = 0.25;
+        const step = 0.24;
 
         const start = i * step;
-        const end = start + 0.6;
 
-        // ✔ FIX: используем current, а не clamped
-        const p = (current - start) / (end - start);
+        // 🔥 ВАЖНО: увеличили диапазон, чтобы последняя строка успевала
+        const end = start + 0.95;
 
-        const ease = Math.max(0, Math.min(1, Math.pow(p, 4.85)));
+        let p = (current - start) / (end - start);
 
-        const y = (1 - ease) * 60;
+        // clamp
+        p = Math.max(0, Math.min(1, p));
 
-        line.style.transform = `translateY(${y}%)`;
-        line.style.opacity = `${ease}`;
+        // softer easing (без "съедания" opacity)
+        const eased = 1 - Math.pow(1 - p, 3);
+
+        // гарантия финального состояния
+        const final = i === lines.length - 1 ? Math.min(1, eased * 1.05) : eased;
+
+        const inner = line.querySelector<HTMLElement>(".q-line-inner");
+        if (!inner) return;
+
+inner.style.transform = `
+  translateY(${(1 - final) * 140}%)
+  translateZ(0)
+`;
+inner.style.filter = `blur(${(1 - final) * 6}px)`;
+        inner.style.opacity = `${final}`;
       });
 
       requestAnimationFrame(animate);

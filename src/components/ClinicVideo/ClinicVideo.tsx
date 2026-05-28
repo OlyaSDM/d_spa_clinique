@@ -98,7 +98,7 @@
 
 
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import "./ClinicVideo.css";
 
 const slides = [
@@ -114,9 +114,34 @@ const slides = [
 
 export default function ClinicVideo() {
   const [active, setActive] = useState(0);
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(false);
+  const [inView, setInView] = useState(false);
 
+  const ref = useRef<HTMLElement | null>(null);
+
+  // 👇 1. отслеживаем появление блока
   useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setInView(entry.isIntersecting);
+      },
+      { threshold: 0.4 } // когда 40% блока видно
+    );
+
+    observer.observe(el);
+
+    return () => observer.disconnect();
+  }, []);
+
+  // 👇 2. запускаем анимацию ТОЛЬКО когда блок в зоне видимости
+  useEffect(() => {
+    if (!inView) return;
+
+    setVisible(true);
+
     const interval = setInterval(() => {
       setVisible(false);
 
@@ -127,12 +152,10 @@ export default function ClinicVideo() {
     }, 6000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [inView]);
 
   return (
-    <section className="experience panel">
-
-      {/* LEFT */}
+    <section className="experience panel" ref={ref}>
       <div className="experience-left">
 
         <div className={`experience-text ${visible ? "show" : ""}`}>
@@ -153,39 +176,22 @@ export default function ClinicVideo() {
             </p>
           </div>
 
-          <div className="extra-lines">
+        </div>
 
-            <div className="exp-mask">
-              <div className="exp-inner">
-                Everything <br /> slows down here
-              </div>
-            </div>
-
-            <div className="exp-mask">
-              <div className="exp-inner">
-                You are cared for, <br /> quietly
-              </div>
-            </div>
-
-          </div>
-
+        <div className="extra-lines">
+          <div>Everything slows down here</div>
+          <div>You are cared for, quietly</div>
         </div>
 
       </div>
 
-      {/* RIGHT */}
-      <div className="experience-right">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="experience-video"
-        >
-          <source src="/video/video.MP4" type="video/mp4" />
-        </video>
-      </div>
-
+<div className={`experience-right ${inView ? "show" : ""}`}>
+  <div className="video-wrap">
+    <video autoPlay muted loop playsInline className="experience-video">
+      <source src="/video/video.MP4" type="video/mp4" />
+    </video>
+  </div>
+</div>
     </section>
   );
 }

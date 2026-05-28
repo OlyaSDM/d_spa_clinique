@@ -52,12 +52,9 @@
     backdrop-filter 0.45s ease,
     padding 0.4s ease;
 }
-
 .header.scrolled {
-  background-color: var(--accent_bright);
-  backdrop-filter: blur(18px);
+  background-color: rgba(120, 163, 169, 0.6);
 }
-
 /* =========================
    LOGO
 ========================= */
@@ -191,7 +188,7 @@
 
 /* цвет */
 .header.scrolled .burger span {
-  background-color: var(--sandy);
+  background-color: var(--white);
 }
 
 .burger.active span {

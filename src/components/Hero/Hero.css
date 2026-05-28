@@ -1,10 +1,13 @@
 :root {
-    --bg_color: #f8f2ed;
-    --accent: #aac4cb;
-    --text_gray: #828988;
-    --text: #403f3f;
+  --bg_color: #f8f2ed;
+  --accent: #aac4cb;
+  --text_gray: #828988;
+  --text: #403f3f;
 }
 
+/* =========================
+   HERO
+========================= */
 
 .hero {
   height: 100vh;
@@ -22,39 +25,25 @@
   position: absolute;
   inset: 0;
 
-
   transform: scale(1.1);
   will-change: transform;
 
   z-index: 0;
 }
 
-
-/* overlay */
-
-/* .hero-overlay {
-  position: absolute;
-  inset: 0;
-
-  background: radial-gradient(
-    circle at center,
-    rgba(238, 231, 231, 0.1),
-    rgba(209, 206, 206, 0.6)
-  );
-
-  z-index: 1;
-} */
-
-/* center */
+/* =========================
+   CENTER
+========================= */
 
 .hero-center {
   position: relative;
   z-index: 2;
-
   text-align: center;
 }
 
-/* WORD */
+/* =========================
+   WORD
+========================= */
 
 .hero-word {
   display: flex;
@@ -66,15 +55,15 @@
   letter-spacing: -0.01em;
 }
 
-/* MASK */
+/* =========================
+   LETTERS
+========================= */
 
 .letter-wrap {
   display: inline-block;
   overflow: hidden;
   height: 1em;
 }
-
-/* LETTER */
 
 .letter {
   display: inline-block;
@@ -92,77 +81,34 @@
     color 0.4s ease,
     text-shadow 0.4s ease;
 
-  /* 🔥 INSET / ENGRAVED EFFECT */
   text-shadow:
     -2px -2px 2px rgba(255,255,255,0.35),
-     2px  2px 3px rgba(0,0,0,0.22),
-     0px  1px 0px rgba(0,0,0,0.12);
+     2px 2px 3px rgba(0,0,0,0.22),
+     0px 1px 0px rgba(0,0,0,0.12);
 
   filter: contrast(1.02);
 }
 
-.letter:hover {
-  color: #d7e6ea;
-
-  transform: translateY(-6px);
-
-  text-shadow:
-    -1px -1px 1px rgba(255,255,255,0.65),
-     2px  2px 4px rgba(0,0,0,0.2);
-}
-/* reveal */
-
 .letter.show {
-  transform: translateY(0%);
+  transform: translateY(0);
   opacity: 1;
 }
 
-/* hover */
-
-.letter.active,
 .letter:hover {
-  color: var(--bg_color);
-  transform: translateY(-8px);
+  color: #d7e6ea;
+  transform: translateY(-6px);
 }
 
-/* description */
+/* =========================
+   DESCRIPTION
+========================= */
 
 .hero-description {
   margin-top: 50px;
-
   max-width: 650px;
   margin-inline: auto;
-
   color: var(--text);
 }
-
-.hero-description h3 {
-  font-size: 28px;
-  margin-bottom: 6px;
-  font-weight: 400;
-}
-
-.hero-description p {
-  font-size: 18px;
-  line-height: 1.7;
-
-}
-
-/* =========================
-   DESCRIPTION ANIMATION
-========================= */
-
-.hero-title,
-.hero-text {
-  opacity: 0;
-  transform: translateY(40px);
-
-  animation-fill-mode: forwards;
-}
-
-/* =========================
-   TEXT REVEAL
-========================= */
 
 .hero-title,
 .hero-text {
@@ -180,9 +126,42 @@
   transform: translateY(0);
 }
 
-.hero-btn {
+.hero-description h3 {
+  font-size: 28px;
+  margin-bottom: 6px;
+  font-weight: 400;
+}
+
+.hero-description p {
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+/* =========================
+   BUTTON WRAP (REVEAL FIX)
+========================= */
+
+.hero-btn-wrap {
   margin-top: 40px;
 
+  opacity: 0;
+  transform: translateY(30px);
+
+  transition:
+    opacity 1.2s ease,
+    transform 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-btn-wrap.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+.hero-btn {
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -190,6 +169,7 @@
 
   padding: 14px 38px;
 
+  font-weight: 800;
   font-size: 14px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -198,11 +178,9 @@
   background: linear-gradient(135deg, #aac4cb, #8fb3ba);
 
   border: none;
-
   cursor: pointer;
 
-  /* 💡 IMPORTANT: no constant motion */
-  transform: translateY(0) scale(1);
+  transform: scale(1);
 
   box-shadow:
     0 12px 30px rgba(0, 0, 0, 0.10),
@@ -225,11 +203,11 @@
   filter: brightness(1.03);
 }
 
-
 .hero-btn:active {
   transform: translateY(-2px) scale(0.99);
-  transition: transform 0.15s ease;
 }
+
+/* glow */
 
 .hero-btn::before {
   content: "";
@@ -252,33 +230,9 @@
   opacity: 1;
 }
 
-
-/* inner glow effect */
-.hero-btn-glow {
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-
-  background: radial-gradient(
-    circle at 30% 30%,
-    rgba(170, 196, 203, 0.35),
-    transparent 70%
-  );
-
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
-
-.hero-btn:hover .hero-btn-glow {
-  opacity: 1;
-}
-
-/* click effect */
-.hero-btn:active {
-  transform: translateY(-1px) scale(0.98);
-}
-
-/* mobile */
+/* =========================
+   MOBILE
+========================= */
 
 @media (max-width: 768px) {
 

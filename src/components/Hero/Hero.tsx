@@ -6,34 +6,40 @@ export default function Hero() {
 
   useEffect(() => {
     const section = heroRef.current;
-
     if (!section) return;
 
-    const letters = section.querySelectorAll(".letter");
-    const texts = section.querySelectorAll(".hero-title, .hero-text");
+    const letters = section.querySelectorAll<HTMLElement>(".letter");
+    const texts = section.querySelectorAll<HTMLElement>(".hero-title, .hero-text");
+    const button = section.querySelector<HTMLElement>(".hero-btn-wrap");
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
+
+          // LETTERS
           letters.forEach((letter, index) => {
-setTimeout(() => {
-  letter.classList.add("show");
-}, index * 260);
+            setTimeout(() => {
+              letter.classList.add("show");
+            }, index * 260);
           });
 
+          // TEXT
           texts.forEach((text, index) => {
             setTimeout(() => {
               text.classList.add("show");
             }, 700 + index * 180);
           });
-        } else {
-          letters.forEach((letter) => {
-            letter.classList.remove("show");
-          });
 
-          texts.forEach((text) => {
-            text.classList.remove("show");
-          });
+          // BUTTON (последний)
+          setTimeout(() => {
+            button?.classList.add("show");
+          }, 1200);
+
+        } else {
+
+          letters.forEach((letter) => letter.classList.remove("show"));
+          texts.forEach((text) => text.classList.remove("show"));
+          button?.classList.remove("show");
         }
       },
       {
@@ -49,7 +55,7 @@ setTimeout(() => {
   const word = "DSPA";
 
   return (
-    <section className="  hero parallax-bg" ref={heroRef}>
+    <section className="hero parallax-bg" ref={heroRef}>
       <div className="hero-overlay"></div>
 
       <div className="hero-center">
@@ -62,17 +68,19 @@ setTimeout(() => {
         </div>
 
         <div className="hero-description">
-          <h3 className="hero-title">
-            Luxury wellness experience
-          </h3>
+          <h3 className="hero-title">Luxury wellness experience</h3>
 
           <p className="hero-text">
             Premium beauty & wellness clinic experience
           </p>
-<button className="hero-btn">
-  Book now
-  <span className="hero-btn-light" />
-</button>
+
+          {/* BUTTON WRAP */}
+          <div className="hero-btn-wrap">
+            <button className="hero-btn">
+              Book now
+              <span className="hero-btn-glow" />
+            </button>
+          </div>
         </div>
       </div>
     </section>

@@ -86,22 +86,22 @@ import logoDark from "../../assets/logo/logo.png";
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [isDesktop, setIsDesktop] = useState(window.innerWidth > 900);
 
   // resize tracker
   useEffect(() => {
     const onResize = () => {
-      const desktop = window.innerWidth > 900;
-      setIsDesktop(desktop);
-
-      if (desktop) setMenuOpen(false);
+      // закрываем меню при переходе на desktop
+      if (window.innerWidth > 900) {
+        setMenuOpen(false);
+      }
     };
 
     window.addEventListener("resize", onResize);
+
     return () => window.removeEventListener("resize", onResize);
   }, []);
 
-  // scroll effect (И ДЛЯ МОБИЛКИ И ДЛЯ ДЕСКТОПА)
+  // scroll effect для desktop + mobile
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 50);
@@ -109,7 +109,7 @@ export default function Header() {
 
     window.addEventListener("scroll", onScroll, { passive: true });
 
-    onScroll(); // initial check
+    onScroll();
 
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -117,8 +117,12 @@ export default function Header() {
   return (
     <>
       <header className={`header ${scrolled ? "scrolled" : ""}`}>
+        
         <div className="logo">
-          <img src={scrolled ? logoWhite : logoDark} alt="D SPA" />
+          <img
+            src={scrolled ? logoWhite : logoDark}
+            alt="D SPA"
+          />
         </div>
 
         <nav className="nav">
@@ -130,18 +134,32 @@ export default function Header() {
 
         <div
           className={`burger ${menuOpen ? "active" : ""}`}
-          onClick={() => setMenuOpen((p) => !p)}
+          onClick={() => setMenuOpen((prev) => !prev)}
         >
           <span />
           <span />
         </div>
+
       </header>
 
       <div className={`mobile-menu ${menuOpen ? "open" : ""}`}>
-        <a href="#home" onClick={() => setMenuOpen(false)}>Home</a>
-        <a href="#services" onClick={() => setMenuOpen(false)}>Services</a>
-        <a href="#about" onClick={() => setMenuOpen(false)}>About</a>
-        <a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a>
+        
+        <a href="#home" onClick={() => setMenuOpen(false)}>
+          Home
+        </a>
+
+        <a href="#services" onClick={() => setMenuOpen(false)}>
+          Services
+        </a>
+
+        <a href="#about" onClick={() => setMenuOpen(false)}>
+          About
+        </a>
+
+        <a href="#contact" onClick={() => setMenuOpen(false)}>
+          Contact
+        </a>
+
       </div>
     </>
   );

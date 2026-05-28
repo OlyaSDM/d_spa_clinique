@@ -68,11 +68,14 @@ export default function Hero() {
         </div>
 
         <div className="hero-description">
-          <h3 className="hero-title">Luxury wellness experience</h3>
+          <h3 className="hero-title">The gentle space for your skin, body & inner calm</h3>
 
-          <p className="hero-text">
-            Premium beauty & wellness clinic experience
-          </p>
+          <p className="hero-text hero-slogan">
+  <span>Sculpt</span>
+  <span>Lift</span>
+  <span>Restore</span>
+  <span>Glow</span>
+</p>
 
           {/* BUTTON WRAP */}
           <div className="hero-btn-wrap">

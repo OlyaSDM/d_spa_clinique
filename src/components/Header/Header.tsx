@@ -80,7 +80,7 @@
 
 import { useEffect, useState } from "react";
 import "./Header.css";
-import logoWhite from "../../assets/logo/logo_gold.png";
+import logoWhite from "../../assets/logo/logo_w.png";
 import logoDark from "../../assets/logo/logo.png";
 
 export default function Header() {

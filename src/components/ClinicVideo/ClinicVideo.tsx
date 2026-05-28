@@ -149,7 +149,7 @@ export default function ClinicVideo() {
         setActive((prev) => (prev + 1) % slides.length);
         setVisible(true);
       }, 500);
-    }, 6000);
+    }, 4500);
 
     return () => clearInterval(interval);
   }, [inView]);

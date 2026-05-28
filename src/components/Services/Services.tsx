@@ -11,17 +11,17 @@ const services: Service[] = [
   {
     title: "Body Treatments",
     desc: "Full body renewal & relaxation",
-    img: "/images/t.webp",
+    img: "/images/.webp",
   },
   {
     title: "Face Massages",
     desc: "Lifting rituals & deep release",
-    img: "/images/m.webp",
+    img: "/images/.webp",
   },
   {
     title: "Facials",
     desc: "Advanced skin hydration & glow",
-    img: "/images/f.webp",
+    img: "/images/.webp",
   },
 ];
 

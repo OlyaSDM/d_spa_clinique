@@ -2,51 +2,45 @@
   --bg_color: #f8f2ed;
   --accent: #c9edf7;
   --accent_bright: #78A3A9;
-  --text_gray: #646464;
   --text: #403f3f;
   --white: #fff;
-  --sandy: #e7c9af;
-}
-/* ================= WRAPPER ================= */
-.services-wrapper {
-  padding: 40px 8vw 0;
-  background: var(--bg_color);
-  margin-top: 180px;
-  position: relative;
 }
 
-/* ================= TITLE MASK ================= */
+/* ================= WRAP ================= */
+.reviews {
+  padding: 180px 1vw;
+  background: #fff;
+  text-align: center;
+  margin-top: 180px;
+}
+
+
+
 .services-title-mask {
   overflow: hidden;
-  text-align: center;
+  display: block;   /* ВАЖНО */
+  position: relative;
 }
 
 .services-title {
   font-size: clamp(70px, 11vw, 130px);
   font-weight: 300;
+    will-change: transform;
+
   letter-spacing: -0.06em;
   font-family: "GT Super";
   color: var(--text);
 
   margin-bottom: 20px;
+  transform: translateY(120%) scale(0.98);
 
-  transform: translateY(120%);
   transition: transform 2.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .services-title-mask.open .services-title {
-  transform: translateY(0%);
+  transform: translateY(0%) scale(1);
 }
 
-/* ================= GRID ================= */
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 22px;
-  padding: 60px 0 100px;
-}
-
-/* ================= CARD ================= */
 .service-tile {
   position: relative;
   overflow: hidden;
@@ -99,35 +93,6 @@ color: var(--text);
 .service-tile:hover::before {
   transform: scale(1.12);
 }
-
-
-
-/* ================= TEXT ================= */
-.service-tile h3 {
-  text-align: center;
-  font-size: 28px;
-  font-weight: 300;
-  margin-bottom: -6px;
-  letter-spacing: -0.02em;
-
-  position: relative;
-  z-index: 2;
-  color: #fff;
-}
-
-.service-tile p {
-  text-align: center;
-  font-size: 20px;
-  font-weight: 300;
-  margin-bottom: 100px;
-
-  position: relative;
-  z-index: 2;
-  color: #fff;
-  opacity: 0.85;
-}
-
-/* ================= BUTTON (ALWAYS VISIBLE) ================= */
 .service-more {
   position: absolute;
   bottom: 48px;
@@ -185,51 +150,102 @@ color: var(--text);
   transform: translateX(-50%) scale(1.05);
 }
 
+/* ================= SLIDER ================= */
+.reviews-slider {
+  margin-top: 90px;
+  position: relative;
+  min-height: 320px;
+}
 
-/* ================= CURSOR ================= */
-.custom-cursor {
-  position: fixed;
+/* ================= CARD ================= */
+.review-card {
+  position: absolute;
+  left: 50%;
   top: 0;
-  left: 0;
 
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
+  width: min(820px, 92%);
+  transform: translateX(-50%) translateY(40px);
 
-  background: var(--sandy);
+  opacity: 0;
+  transition: 0.9s ease;
+}
 
+.review-card.active {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ================= TEXT ================= */
+.review-text {
+  position: relative;
+  font-size: clamp(20px, 2.2vw, 28px);
+  line-height: 1.9;
+  font-weight: 300;
+  color: rgba(64, 63, 63, 0.85);
+  padding: 0 40px;
+}
+
+/* BIG QUOTES */
+.review-text::before,
+.review-text::after {
+  position: absolute;
+  font-size: 120px;
+  color: rgba(170, 196, 203, 0.25);
+  font-family: serif;
+}
+
+.review-text::before {
+  content: "“";
+  left: -10px;
+  top: -60px;
+}
+
+.review-text::after {
+  content: "”";
+  right: -10px;
+  bottom: -80px;
+}
+
+/* ================= META ================= */
+.review-meta {
+  margin-top: 34px;
   display: flex;
-  align-items: center;
   justify-content: center;
+  gap: 12px;
 
-  pointer-events: none;
-  z-index: 9999;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(64, 63, 63, 0.55);
+}
+
+/* ================= DOTS ================= */
+.dots {
+  margin-top: 70px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
 
   opacity: 0;
-  transform: scale(0.3);
-
-  transition: transform 0.25s ease, opacity 0.25s ease;
+  transform: translateY(20px);
+  transition: 1s ease;
 }
 
-.custom-cursor.active {
-  width: 80px;
-  height: 80px;
+.dots.show {
   opacity: 1;
-  transform: scale(1);
+  transform: translateY(0);
 }
 
-.custom-cursor span {
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 1px;
-  color: var(--text);
-
-  opacity: 0;
-  transform: scale(0.6);
-  transition: 0.2s ease;
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(64, 63, 63, 0.2);
+  cursor: pointer;
 }
 
-.custom-cursor.active span {
-  opacity: 1;
-  transform: scale(1);
+.dot.active {
+  background: var(--accent_bright);
+  transform: scale(1.4);
 }

@@ -11,6 +11,7 @@ import "./App.css";
 import About from "./components/About/About";
 import Services from "./components/Services/Services";
 import Reviews from "./components/Reviews/Reviews";
+import Gallery from "./components/Gallery/Gallery";
 
 export default function App() {
   const [loading, setLoading] = useState(true);
@@ -74,7 +75,7 @@ export default function App() {
 <About />
 <Services />
 <Reviews/>
-
+<Gallery />
 
           </main>
         </>

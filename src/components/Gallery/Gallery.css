@@ -1,0 +1,211 @@
+
+@font-face {
+  font-family: 'GT Super';
+  src: url('../../assets/GT-Super/GT-Super-Display-Light-Trial.woff2') format('woff2');
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: 'GT Super';
+  src: url('../../assets/GT-Super/GT-Super-Display-Light-Italic-Trial.woff2') format('woff2');
+  font-weight: 300;
+  font-style: italic;
+}
+
+* {
+  font-family: 'GT Super';
+}
+
+:root {
+  --bg_color: #f8f2ed;
+  --accent_bright: #78A3A9;
+  --text: #403f3f;
+}
+
+.bag {
+  background: var(--bg_color);
+  padding: 0 0 120px;
+}
+
+.bagContainer {
+  width: 100%;
+}
+
+/* ================= TITLE ================= */
+
+.services-title-mask {
+  overflow: hidden;
+  margin-bottom: 60px;
+  padding: 0 80px;
+}
+
+.befor_after-title {
+  font-size: clamp(70px, 11vw, 130px);
+  font-weight: 300;
+  letter-spacing: -0.06em;
+  color: var(--accent_bright);
+
+  transform: translateY(100%);
+  transition: transform 1.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.services-title-mask.open .befor_after-title {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.gallery {
+  color: var(--accent_bright);
+}
+/* ================= GALLERY ================= */
+
+.galleryWrap {
+  overflow: hidden;
+  width: 100%;
+}
+
+.bagGrid {
+  display: flex;
+  gap: 24px;
+  width: max-content;
+
+  animation: scrollGallery 40s linear infinite;
+}
+
+.bagGrid:hover {
+  animation-play-state: paused;
+}
+
+@keyframes scrollGallery {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* ================= CARD ================= */
+
+.bagCard {
+  width: 540px;
+  flex-shrink: 0;
+
+  transition: transform 0.5s ease;
+}
+
+.bagCard:hover {
+  transform: scale(1.03);
+}
+
+.bagTitle {
+  padding-top: 18px;
+
+  text-align: center;
+  font-size: 28px;
+  color: var(--text);
+}
+
+/* ================= SIMPLE IMAGE ================= */
+
+.simpleImage {
+  width: 100%;
+  height: 520px;
+
+  object-fit: cover;
+}
+
+/* ================= BEFORE AFTER ================= */
+
+.slider {
+  position: relative;
+
+  width: 100%;
+  height: 520px;
+
+  overflow: hidden;
+
+  cursor: ew-resize;
+  user-select: none;
+}
+
+.after {
+  position: absolute;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.before {
+  position: absolute;
+
+  height: 100%;
+  overflow: hidden;
+}
+
+.before img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.line {
+  position: absolute;
+  top: 0;
+
+  width: 4px;
+  height: 100%;
+
+  background: rgba(255,255,255,0.9);
+
+  transform: translateX(-50%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.handle {
+  background: white;
+
+  padding: 10px 14px;
+
+  border-radius: 999px;
+
+  font-size: 22px;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 768px) {
+
+  .services-title-mask {
+    padding: 0 24px;
+  }
+
+  .bagCard {
+    width: 260px;
+  }
+
+  .slider,
+  .simpleImage {
+    height: 340px;
+  }
+
+  .bagTitle {
+    font-size: 22px;
+  }
+
+  .services-title-mask {
+  overflow: hidden;
+  margin-bottom: -10px;
+  padding: 0 60px;
+}
+}

@@ -22,7 +22,7 @@
   position: relative;
 }
 
-.services-title {
+.reviews-title {
   font-size: clamp(70px, 11vw, 130px);
   font-weight: 300;
     will-change: transform;
@@ -37,118 +37,26 @@
   transition: transform 2.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.services-title-mask.open .services-title {
+.services-title-mask.open .reviews-title {
   transform: translateY(0%) scale(1);
 }
 
-.service-tile {
-  position: relative;
+.services-title-mask {
   overflow: hidden;
-  height: 280px;
-  padding: 28px;
+}
 
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-
-  cursor: pointer;
-color: var(--text);
+.reviews-title {
+  transform: translateY(100%);
   opacity: 0;
-  transform: translateY(90px);
-
-  transition:
-    opacity 1.6s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 1.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: 1s ease;
 }
 
-.service-tile.visible {
-  opacity: 1;
+.services-title-mask.open .reviews-title {
   transform: translateY(0);
-}
-
-/* ================= IMAGE ================= */
-/* ================= IMAGE (SOFT CINEMATIC ZOOM) ================= */
-.service-tile::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-
-  background-image: var(--img);
-  background-size: cover;
-  background-position: center;
-
-  transform: scale(1.08);
-  transition: transform 2.2s cubic-bezier(0.16, 1, 0.3, 1);
-
-  z-index: 0;
-  will-change: transform;
-}
-
-/* стартовый reveal zoom */
-.service-tile.visible::before {
-  transform: scale(1.02);
-}
-
-/* hover zoom (мягкий, не дерганый) */
-.service-tile:hover::before {
-  transform: scale(1.12);
-}
-.service-more {
-  position: absolute;
-  bottom: 48px;
-  left: 50%;
-  transform: translateX(-50%);
-
-  padding: 10px 26px;
-
-  font-size: 12px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-
-  background: rgba(255, 255, 255, 0.14);
-  color: #fff;
-
-  border: 1px solid rgba(255,255,255,0.25);
-  backdrop-filter: blur(10px);
-
-  cursor: pointer;
-  z-index: 3;
-
   opacity: 1;
-  transition: 0.4s ease;
-}
-.service-tile::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-
-  /* base dark layer */
-  background: linear-gradient(
-    to top,
-    rgba(0,0,0,0.72) 0%,
-    rgba(0,0,0,0.35) 75%,
-    rgba(0,0,0,0.10) 100%
-  );
-
-  z-index: 1;
-
-  transition: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* hover = EVEN deeper cinematic feel */
-.service-tile:hover::after {
-  background: linear-gradient(
-    to top,
-    rgba(0,0,0,0.82) 0%,
-    rgba(0,0,0,0.45) 45%,
-    rgba(0,0,0,0.18) 100%
-  );
-}
 
-.service-tile:hover .service-more {
-  background: rgba(255, 255, 255, 0.22);
-  transform: translateX(-50%) scale(1.05);
-}
 
 /* ================= SLIDER ================= */
 .reviews-slider {

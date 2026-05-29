@@ -23,8 +23,9 @@
 }
 
 .bag {
-  background: var(--bg_color);
+  background: var(--white);
   padding: 0 0 120px;
+  margin-top: 180px;
 }
 
 .bagContainer {

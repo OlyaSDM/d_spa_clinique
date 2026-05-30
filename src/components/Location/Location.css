@@ -1,0 +1,79 @@
+.location {
+  position: relative;
+  width: 100%;
+  height: 350px;
+  overflow: hidden;
+  padding-bottom: 80px;
+  padding-top: 80px;
+}
+
+.location iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+
+  filter: grayscale(0.1);
+}
+
+.location__overlay {
+  position: absolute;
+  left: 60px;
+  bottom: 100px;
+  z-index: 2;
+
+  width: 420px;
+
+  background: rgba(255,255,255,.92);
+  backdrop-filter: blur(20px);
+
+  padding: 32px;
+}
+
+.location__overlay span {
+  font-size: 12px;
+  letter-spacing: .2em;
+  color: var(--accent_bright);
+}
+
+.location__overlay h2 {
+  margin: 12px 0;
+  font-family: "GT Super";
+  font-weight: 300;
+  font-size: 48px;
+  line-height: .95;
+}
+
+.location__overlay p {
+  color: var(--text_gray);
+  margin-bottom: 24px;
+}
+
+.location__overlay a {
+  display: inline-flex;
+  align-items: center;
+
+  padding: 14px 24px;
+  border-radius: 999px;
+
+  background: var(--accent);
+  color: var(--text);
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .location {
+    height: 420px;
+    border-radius: 24px;
+  }
+
+  .location__overlay {
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    width: auto;
+  }
+
+  .location__overlay h2 {
+    font-size: 32px;
+  }
+}

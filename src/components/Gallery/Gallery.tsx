@@ -73,25 +73,23 @@ export default function Gallery() {
           <div className="bagGrid">
 
             {[...items, ...items].map((item, i) => (
-              <div className="bagCard" key={i}>
+<div className="bagCard" key={i}>
+  {item.type === "image" && (
+    <img
+      className="simpleImage"
+      src={item.src}
+      alt={item.title}
+    />
+  )}
 
-                {/* IMAGE */}
-                {item.type === "image" && (
-                  <img
-                    className="simpleImage"
-                    src={item.src}
-                    alt={item.title}
-                  />
-                )}
+  {item.type === "ba" && (
+    <BeforeAfterCard item={item} />
+  )}
 
-                {/* BEFORE / AFTER */}
-                {item.type === "ba" && (
-                  <BeforeAfterCard item={item} />
-                )}
-
-                <div className="bagTitle">{item.title}</div>
-
-              </div>
+  <div className="cardOverlay">
+    <div className="bagTitle">{item.title}</div>
+  </div>
+</div>
             ))}
 
           </div>

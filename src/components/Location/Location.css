@@ -38,9 +38,9 @@
 .location__overlay h2 {
   margin: 12px 0;
   font-family: "GT Super";
+  color: var(--accent_bright);
   font-weight: 300;
   font-size: 48px;
-  line-height: .95;
 }
 
 .location__overlay p {
@@ -53,10 +53,11 @@
   align-items: center;
 
   padding: 14px 24px;
-  border-radius: 999px;
-
-  background: var(--accent);
+border: 2px solid var(--accent);
+font-weight: 600;
+  background: var(--white);
   color: var(--text);
+  text-transform: uppercase;
   text-decoration: none;
 }
 

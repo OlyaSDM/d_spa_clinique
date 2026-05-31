@@ -65,7 +65,7 @@ export default function Gallery() {
 
         {/* TITLE */}
       <div className={`services-title-mask ${visible ? "open" : ""}`}>
-        <h2 className="services-title gallery">Gallery</h2>
+        <h2 className="gallery-title ">Gallery</h2>
       </div>
 
         {/* MOVING GALLERY */}

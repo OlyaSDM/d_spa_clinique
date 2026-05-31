@@ -6,7 +6,7 @@ export default function Location() {
   <div className="location__overlay">
     <span>LOCATION</span>
 
-    <h2>D Spa Clinique</h2>
+    <h2>DSpaClinique</h2>
 
     <p>
       12591 Research Blvd, Suite 203
@@ -24,7 +24,7 @@ export default function Location() {
   </div>
 
 <iframe
-  title="D Spa Clinique"
+  title="DSpaClinique"
   src="https://www.google.com/maps?q=30.4502476,-97.786808&z=16&output=embed"
   loading="lazy"
   allowFullScreen

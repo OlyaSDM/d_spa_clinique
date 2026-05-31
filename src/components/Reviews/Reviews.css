@@ -2,19 +2,25 @@
   --bg_color: #f8f2ed;
   --accent: #c9edf7;
   --accent_bright: #78A3A9;
+  --text_gray: #646464;
   --text: #403f3f;
   --white: #fff;
+  --sandy: #e7c9af;
 }
+
+
 
 /* ================= WRAP ================= */
 .reviews {
-  padding: 180px 1vw;
+  padding: 80px 1vw;
   background-color: var(--bg_color);
   text-align: center;
   margin-top: 180px;
 }
 
-
+.feel {
+  color: var(--accent_bright);
+}
 
 .services-title-mask {
   overflow: hidden;
@@ -22,14 +28,14 @@
   position: relative;
 }
 
-.reviews-title {
+.feel-title {
   font-size: clamp(70px, 11vw, 130px);
   font-weight: 300;
     will-change: transform;
 
   letter-spacing: -0.06em;
   font-family: "GT Super";
-  color: var(--text);
+  color: var(--accent_bright);
 
   margin-bottom: 20px;
   transform: translateY(120%) scale(0.98);
@@ -37,7 +43,7 @@
   transition: transform 2.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.services-title-mask.open .reviews-title {
+.services-title-mask.open .feel-title {
   transform: translateY(0%) scale(1);
 }
 
@@ -45,13 +51,13 @@
   overflow: hidden;
 }
 
-.reviews-title {
+.feel-title {
   transform: translateY(100%);
   opacity: 0;
   transition: 1s ease;
 }
 
-.services-title-mask.open .reviews-title {
+.services-title-mask.open .feel-title {
   transform: translateY(0);
   opacity: 1;
 }
@@ -60,7 +66,6 @@
 
 /* ================= SLIDER ================= */
 .reviews-slider {
-  margin-top: 90px;
   position: relative;
   min-height: 320px;
 }
@@ -89,7 +94,7 @@
   font-size: clamp(20px, 2.2vw, 28px);
   line-height: 1.9;
   font-weight: 300;
-  color: rgba(64, 63, 63, 0.85);
+  color: var(--text);
   padding: 0 40px;
 }
 
@@ -114,6 +119,7 @@
   bottom: -80px;
 }
 
+
 /* ================= META ================= */
 .review-meta {
   margin-top: 34px;
@@ -121,15 +127,15 @@
   justify-content: center;
   gap: 12px;
 
-  font-size: 12px;
+  font-size: 14px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(64, 63, 63, 0.55);
+  color: var(--text_gray);
 }
 
 /* ================= DOTS ================= */
 .dots {
-  margin-top: 70px;
+  margin-top: 20px;
   display: flex;
   justify-content: center;
   gap: 10px;
@@ -156,4 +162,17 @@
 .dot.active {
   background: var(--accent_bright);
   transform: scale(1.4);
+}
+
+@media (max-width: 768px) {
+
+.dots {
+  margin-top: -2%;
+  margin-bottom: 40px;
+}
+
+.reviews {
+  padding: 40px 1vw;
+
+}
 }

@@ -64,7 +64,7 @@ export default function Reviews() {
 
       {/* TITLE (как Services mask) */}
       <div className={`services-title-mask ${visible ? "open" : ""}`}>
-        <h2 className="services-title">What clients feel</h2>
+        <h2 className="feel-title ">What clients feel</h2>
       </div>
 
       {/* SLIDER */}

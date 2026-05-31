@@ -44,22 +44,23 @@
   padding: 0 80px;
 }
 
-.befor_after-title {
+
+.gallery-title {
   font-size: clamp(70px, 11vw, 130px);
   font-weight: 300;
   letter-spacing: -0.06em;
-  color: var(--accent_bright);
+  font-family: "GT Super";
+  color: var(--text);
 
-  transform: translateY(100%);
-  transition: transform 1.8s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: transform;
+  margin-bottom: 20px;
+
+  transform: translateY(120%);
+  transition: transform 2.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.services-title-mask.open .befor_after-title {
-  transform: translateY(0);
-  opacity: 1;
+.services-title-mask.open .gallery-title {
+  transform: translateY(0%);
 }
-
 .gallery {
   color: var(--accent_bright);
 }
@@ -255,7 +256,7 @@
   .services-title-mask {
   overflow: hidden;
   margin-bottom: -10px;
-  padding: 0 60px;
+  padding: 0 80px;
 }
 }
 

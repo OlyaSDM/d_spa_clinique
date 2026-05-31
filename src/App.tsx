@@ -116,43 +116,49 @@ import "./App.css";
 export default function App() {
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const lenis = new Lenis({
-      duration: 1.4,
-      lerp: 0.035,
-      smoothWheel: true,
-      wheelMultiplier: 0.75,
-      touchMultiplier: 1,
-    });
+useEffect(() => {
+  const lenis = new Lenis({
+    duration: 1.4,
+    easing: (t: number) => 1 - Math.pow(1 - t, 3),
+    smoothWheel: true,
+    wheelMultiplier: 1,
+    touchMultiplier: 1.1,
+  });
 
-    const bgImg = document.querySelector(
-      ".global-bg img"
-    ) as HTMLElement | null;
+  const bgImg = document.querySelector(".global-bg img") as HTMLElement | null;
 
-    let frameId = 0;
+  let currentY = 0;
 
-    const raf = (time: number) => {
-      lenis.raf(time);
+  function raf(time: number) {
+    lenis.raf(time);
 
-      const scroll = lenis.scroll;
+    const scroll = lenis.scroll;
 
-      if (bgImg) {
-        bgImg.style.transform = `
-          translate3d(0, ${scroll * 0.2}px, 0)
-          scale(1.12)
-        `;
-      }
+    // 🎯 очень мягкое движение
+    const targetY = scroll * 0.03;
 
-      frameId = requestAnimationFrame(raf);
-    };
+    // 🎯 инерция (главный “живой” эффект)
+    currentY += (targetY - currentY) * 0.06;
 
-    frameId = requestAnimationFrame(raf);
+    if (bgImg) {
+      const breathe = 1.25 + Math.sin(time * 0.0003) * 0.006;
+      const driftX = Math.sin(time * 0.00015) * 4;
 
-    return () => {
-      cancelAnimationFrame(frameId);
-      lenis.destroy();
-    };
-  }, []);
+      bgImg.style.transform = `
+        translate3d(${driftX}px, ${currentY}px, 0)
+        scale(${breathe})
+      `;
+    }
+
+    requestAnimationFrame(raf);
+  }
+
+  requestAnimationFrame(raf);
+
+  return () => {
+    lenis.destroy();
+  };
+}, []);
 
   useEffect(() => {
     document.body.style.overflow = loading ? "hidden" : "auto";

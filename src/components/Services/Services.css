@@ -23,12 +23,12 @@
 }
 
 .services-title {
-  font-size: clamp(70px, 11vw, 130px);
+  font-size: clamp(55px, 11vw, 130px);
   font-weight: 300;
   letter-spacing: -0.06em;
   font-family: "GT Super";
   color: var(--text);
-
+text-align: center;
   margin-bottom: 20px;
 
   transform: translateY(120%);
@@ -233,4 +233,10 @@ color: var(--text);
 .custom-cursor.active span {
   opacity: 1;
   transform: scale(1);
+}
+
+@media (max-width: 768px) {
+  .service-tile {
+    text-align: center;
+  }
 }

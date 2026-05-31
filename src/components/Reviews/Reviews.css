@@ -30,7 +30,7 @@
 }
 
 .feel-title {
-  font-size: clamp(70px, 11vw, 130px);
+  font-size: clamp(50px, 11vw, 130px);
   font-weight: 300;
     will-change: transform;
 
@@ -186,4 +186,11 @@ max-width: 500px;
   margin-top: 10%;
 }
 
+}
+
+@media (max-width: 468px) {
+
+/* .feel-title {
+  font-size: 20px;
+} */
 }

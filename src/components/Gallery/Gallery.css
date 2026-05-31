@@ -46,7 +46,7 @@
 
 
 .gallery-title {
-  font-size: clamp(70px, 11vw, 130px);
+  font-size: clamp(55px, 11vw, 130px);
   font-weight: 300;
   letter-spacing: -0.06em;
   font-family: "GT Super";

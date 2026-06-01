@@ -3,7 +3,7 @@
 
 .footer {
   padding: 6rem 6vw 2rem;
-  background: var(--bg_color_two);
+  background: var(--bg_color);
   color: var(--text);
 }
 

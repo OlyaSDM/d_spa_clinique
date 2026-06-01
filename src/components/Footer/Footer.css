@@ -3,7 +3,7 @@
 
 .footer {
   padding: 6rem 6vw 2rem;
-  background: var(--bg_color);
+  background: var(--bg_color_two);
   color: var(--text);
 }
 
@@ -82,4 +82,10 @@
     flex-direction: column;
     gap: 8px;
   }
+  
+
+.footer {
+  padding: 3rem 6vw 2rem;
+
+}
 }

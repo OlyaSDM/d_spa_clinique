@@ -1,12 +1,4 @@
-:root {
-  --bg_color: #f8f2ed;
-  --accent: #c9edf7;
-  --accent_bright: #78A3A9;
-  --text_gray: #646464;
-  --text: #403f3f;
-  --white: #fff;
-  --sandy: #e7c9af;
-}
+
 /* ================= WRAPPER ================= */
 .services-wrapper {
   padding: 40px 8vw 0;

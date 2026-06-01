@@ -16,15 +16,6 @@
   font-family: 'GT Super';
 }
 
-:root {
-  --bg_color: #f8f2ed;
-  --accent: #c9edf7;
-  --accent_bright: #78A3A9;
-  --text_gray: #828988;
-  --text: #403f3f;
-  --white: #fff;
-  --sandy: #f5dcc7;
-}
 
 .bag {
   background: var(--bg_color);

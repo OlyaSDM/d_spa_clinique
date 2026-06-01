@@ -1,12 +1,3 @@
-:root {
-  --bg_color: #f8f2ed;
-  --accent: #c9edf7;
-  --accent_bright: #78A3A9;
-  --text_gray: #646464;
-  --text: #403f3f;
-  --white: #fff;
-  --sandy: #e7c9af;
-}
 
 
 
@@ -174,7 +165,7 @@ margin-top: -3%;
 }
 
 .reviews {
-  padding: 40px 1vw;
+  padding: 80px 1vw;
 
 }
 

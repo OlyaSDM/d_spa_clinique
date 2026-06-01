@@ -136,15 +136,7 @@
   }
 }  */
 
-:root {
-  --bg_color: #f8f2ed;
-  --accent: #c9edf7;
-  --accent_bright: #78A3A9;
-  --text_gray: #828988;
-  --text: #403f3f;
-  --white: #fff;
-  --sandy: #e7c9af;
-}
+
 
 /* ================= SECTION ================= */
 
@@ -153,13 +145,15 @@
   align-items: center;
   justify-content: space-between;
 
-  gap: clamp(24px, 5vw, 80px);
+  gap: clamp(24px, 5vw, 20px);
 
-  margin: 180px 0 100px;
-  padding: 0 clamp(20px, 6vw, 180px);
+  padding-block: clamp(80px, 1vw, 120px);
+  padding-inline: clamp(20px, 6vw, 180px);
+
+  margin-top: 180px;
 
   background: #f4f1ed;
-  min-height: 100vh; /* 👈 важно убирает "пустоту снизу" */
+
 }
 
 /* ================= LEFT ================= */
@@ -176,7 +170,7 @@
   max-width: 820px;
 }
 
-/* ================= TEXT ANIMATION ================= */
+/* ================= ANIMATION ================= */
 
 .exp-mask {
   overflow: hidden;
@@ -184,13 +178,15 @@
 
 .exp-inner {
   display: inline-block;
+
   transform: translate3d(0, 70%, 0);
   opacity: 0;
 
   will-change: transform, opacity;
 
-  transition: transform 1.8s cubic-bezier(0.16, 1, 0.3, 1),
-              opacity 1.4s ease;
+  transition:
+    transform 1.8s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 1.4s ease;
 }
 
 .experience-text.show .exp-inner {
@@ -212,7 +208,7 @@
 }
 
 .experience-text p {
-  margin-top: 28px;
+  margin-top: 24px;
   font-size: 18px;
   line-height: 1.7;
   font-weight: 300;
@@ -222,17 +218,18 @@
 /* extra lines */
 
 .extra-lines {
-  margin-top: 40px;
+  margin-top: 32px;
   font-size: clamp(20px, 2.5vw, 26px);
   font-weight: 300;
   color: #403f3f;
   line-height: 1.2;
   opacity: 0.75;
 }
+
 .exp-mask p {
   font-size: 34px;
-  margin-top: -5px;
 }
+
 /* ================= RIGHT ================= */
 
 .experience-right {
@@ -240,15 +237,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
-  align-self: center; /* 👈 убирает перекос высоты */
+  align-self: center;
 }
 
-/* ================= VIDEO WRAP ================= */
+/* ================= VIDEO ================= */
 
 .video-wrap {
   width: min(620px, 100%);
-  height: 620px; /* 👈 фиксированная нормальная высота */
+  height: 620px;
 
   overflow: hidden;
 
@@ -268,8 +264,6 @@
   filter: blur(0);
 }
 
-/* ================= VIDEO ================= */
-
 .experience-video {
   width: 100%;
   height: 100%;
@@ -287,22 +281,17 @@
   transform: scale(1.06);
 }
 
-/* ================= MOBILE ================= */
+/* ================= MOBILE FIX (ГЛАВНОЕ) ================= */
 
 @media (max-width: 900px) {
   .experience {
     flex-direction: column;
     text-align: center;
+    margin: 100px 0 80px;
   }
 
   .experience-left {
     max-width: 100%;
-  }
-.exp-inner {
-  margin-top: 80px;
-}
-  .experience-right {
-    padding: 20px 0 40px;
   }
 
   .experience-text h2 {
@@ -310,6 +299,19 @@
   }
 
   .experience-text p {
+    margin-top: 14px; /* 🔥 ключевой фикс */
     font-size: 16px;
+  }
+
+  .extra-lines {
+    margin-top: 20px;
+  }
+
+  .experience-right {
+    padding: 20px 0 40px;
+  }
+
+  .exp-inner {
+    transform: translate3d(0, 45%, 0); /* 🔥 мягче анимация на мобилке */
   }
 }

@@ -136,7 +136,6 @@ export default function ClinicVideo() {
     return () => observer.disconnect();
   }, []);
 
-  // 👇 2. запускаем анимацию ТОЛЬКО когда блок в зоне видимости
   useEffect(() => {
     if (!inView) return;
 

@@ -8,13 +8,24 @@
 :root {
     --bg_color: #f8f2ed;
     --accent: #c9edf7;
+    --accent_bright: #a78b86;
+    --text_gray: #828988;
+    --text: #403f3f;
+    --white: #fff;
+    --sandy: #e7c9af;
+    --bg_color_two: #2B343A;
+}
+
+/* :root {
+    --bg_color: #f8f2ed;
+    --accent: #c9edf7;
     --accent_bright: #78A3A9;
     --text_gray: #828988;
     --text: #403f3f;
     --white: #fff;
     --sandy: #e7c9af;
 }
-
+ */
 
 @font-face {
   font-family: 'GT Super';

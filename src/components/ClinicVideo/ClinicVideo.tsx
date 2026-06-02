@@ -178,8 +178,8 @@ export default function ClinicVideo() {
         </div>
 
         <div className="extra-lines">
-          <div>Everything slows down here</div>
-          <div>You are cared for, quietly</div>
+          <div>Everything slows down here...</div>
+          <div className="you">You are cared for, quietly...</div>
         </div>
 
       </div>

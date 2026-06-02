@@ -47,8 +47,13 @@ const observer = new IntersectionObserver(
 
   <div className="about-mask">
     <p className="about-bio">
-      Licensed esthetician & massage therapist based in Los Angeles.
-      Focused on natural skin renewal, relaxation therapy and holistic care.
+
+I began my career in medicine as a Pediatrician and Neonatologist before following my passion for wellness, skincare, and therapeutic care. This journey led me to become a certified Esthetician and licensed Massage Therapist.
+
+For many years, I have helped clients feel confident, refreshed, and cared for through personalized treatments that support both beauty and well-being. My approach combines professional expertise, attention to detail, and genuine care to create a relaxing and effective experience.
+
+I look forward to welcoming you and helping you feel your best.
+
     </p>
   </div>
 

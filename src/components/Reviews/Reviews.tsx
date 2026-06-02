@@ -9,22 +9,34 @@ type Review = {
 
 const reviews: Review[] = [
   {
-    name: "Anna",
+    name: "Keren Florian",
     role: "Client",
     text:
-      "One of the most calming experiences I’ve ever had. Everything feels intentional and slow in the best way.",
+      "Diana is the best! My skin has gotten so much improved and each treatment is so much fun and with great results. I can’t wait for my next one..",
   },
   {
-    name: "Maria",
+    name: "Bar Golan",
     role: "Client",
     text:
-      "The atmosphere is incredible. You immediately feel safe, relaxed and taken care of.",
+      `Diana is the best!Our family has been getting massages and facials for a few years and will never go to another place again.Diana is kind, professional, caring and really cares about providing the best experience.Thank you Diana! Can’t wait to my next facial!`,
   },
   {
-    name: "Julia",
+    name: "Sasha Nikashova",
     role: "Client",
     text:
-      "Not just a treatment — it feels like a reset for the body and mind.",
+      "I’ve been going to diana for years ! She has the most relaxing facials and massages that I have ever had done. If you want your clogged pores gone or just want a dreamy massage, she listens very carefully to your concerns and goes above and beyond to make sure you are taken care of. Absolutely the best esthetician with very affordable prices. I 100% recommend going to her if you want a self-care day.",
+  },
+    {
+    name: "Gili Meidan",
+    role: "Client",
+    text:
+      "I can’t recommend Diana (D Spa Clinique) enough! I have been a loyal client of Diana for 8 years now, and I wouldn't go anywhere else.She is a true professional with magic hands. Not only did my skin look absolutely glowing and refreshed after her facial, but she also worked wonders on my body. It’s the perfect combination of professional skincare and a deep, healing massage. I always leave feeling like a new person. It's a 10/10 experience every single time.",
+  },
+    {
+    name: "Sofia Lobynicheva",
+    role: "Client",
+    text:
+      "I had the most amazing experience with Diana at D Spa Clinique. I came in for my very first facial as a teenager and she made me feel so comfortable and welcome right away. She explained everything, was super gentle, and made the whole appointment relaxing and enjoyable. My skin felt incredible afterward and I couldn’t believe the glow. You can tell she really cares about her clients and loves what she does. I will definitely be coming back and highly recommend her to anyone, especially if it’s your first facial.",
   },
 ];
 
@@ -54,7 +66,7 @@ export default function Reviews() {
   useEffect(() => {
     const interval = setInterval(() => {
       setActive((p) => (p + 1) % reviews.length);
-    }, 6000);
+    }, 15000);
 
     return () => clearInterval(interval);
   }, []);

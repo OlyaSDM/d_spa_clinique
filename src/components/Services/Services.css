@@ -36,7 +36,7 @@ text-align: center;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 22px;
-  padding: 60px 0 100px;
+  padding: 20px 0 120px;
 }
 
 /* ================= CARD ================= */
@@ -230,5 +230,10 @@ color: var(--text);
 @media (max-width: 768px) {
   .service-tile {
     text-align: center;
+  }
+
+  .services-wrapper {
+      padding: 20px 8vw 0;
+
   }
 }

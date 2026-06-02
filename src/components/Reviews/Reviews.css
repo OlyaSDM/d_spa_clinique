@@ -68,7 +68,7 @@
   left: 50%;
   top: 0;
 
-  width: min(820px, 92%);
+  width: min(1120px, 92%);
   transform: translateX(-50%) translateY(40px);
 
   opacity: 0;
@@ -84,7 +84,7 @@
 .review-text {
   position: relative;
   font-size: clamp(20px, 2.2vw, 28px);
-  line-height: 1.9;
+  line-height: 1.2;
   font-weight: 300;
   color: var(--text);
   padding: 0 40px;
@@ -160,12 +160,12 @@ margin-top: -3%;
 @media (max-width: 768px) {
 
 .dots {
-  margin-top: -5%;
+  margin-top: 60px;
   margin-bottom: 40px;
 }
 
 .reviews {
-  padding: 80px 1vw;
+  padding: 20px 1vw;
 
 }
 
@@ -179,9 +179,9 @@ max-width: 500px;
 
 }
 
-@media (max-width: 468px) {
+@media (max-width: 568px) {
 
-/* .feel-title {
-  font-size: 20px;
-} */
+.dots {
+  margin-top: 140px;
+}
 }

@@ -35,7 +35,7 @@
   align-items: center;
   justify-content: center;
 
-  padding: 60px;
+  padding: 0px 0 50px 50px;
 }
 
 /* =========================
@@ -100,7 +100,7 @@
 .about-content {
   position: absolute;
   left: 12%;
-  bottom: 4%;
+  bottom: 1%;
   z-index: 5;
 }
 
@@ -169,7 +169,7 @@
 
 .about-sub {
   margin-bottom: 14px;
-  margin-top: 40px;
+  margin-top: 20px;
   font-size: 30px;
   font-weight: 700;
   letter-spacing: 0.28em;
@@ -192,11 +192,12 @@
 
 .about-bio {
   margin-top: 8px;
-  max-width: 860px;
-  font-size: 26px;
+  max-width: 1260px;
+  font-size: 24px;
   line-height: 1.2;
   color: var(--text);
   letter-spacing: 0.01em;
+  padding-bottom: 20px;
 }
 
 /* =========================

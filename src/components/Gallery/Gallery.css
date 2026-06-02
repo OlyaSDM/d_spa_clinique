@@ -216,6 +216,12 @@
 /* ================= MOBILE ================= */
 
 @media (max-width: 768px) {
+  .bag {
+  background: var(--bg_color);
+  padding: 20px 0 120px;
+  margin-top: 180px;
+}
+
 
   .services-title-mask {
     padding: 0 24px;

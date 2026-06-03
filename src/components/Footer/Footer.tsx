@@ -7,7 +7,7 @@ import {
 
 export default function Footer() {
   return (
-    <footer className="footer">
+    <footer className="footer" id="contact">
       <div className="footer__top">
         <div className="footer__brand">
           <h2>DSpaClinique</h2>

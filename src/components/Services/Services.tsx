@@ -11,12 +11,12 @@ const services: Service[] = [
   {
     title: "Body Treatments",
     desc: "Full body renewal & relaxation",
-    img: "/images/.webp",
+    img: "/images/",
   },
   {
     title: "Face Massages",
     desc: "Lifting rituals & deep release",
-    img: "/images/.webp",
+    img: "/images/",
   },
   {
     title: "Facials",
@@ -84,6 +84,7 @@ export default function Services() {
       ref={sectionRef}
       className="services-wrapper"
       onMouseLeave={() => setCursorActive(false)}
+      id="services"
     >
       {/* CURSOR */}
       <div

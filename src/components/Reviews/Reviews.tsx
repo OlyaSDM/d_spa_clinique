@@ -72,7 +72,7 @@ export default function Reviews() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="reviews">
+    <section ref={sectionRef} className="reviews" id="reviews">
 
       {/* TITLE (как Services mask) */}
       <div className={`services-title-mask ${visible ? "open" : ""}`}>

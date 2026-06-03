@@ -35,7 +35,7 @@ const observer = new IntersectionObserver(
           </div>
 
           <p>
-            Give the gift of beauty, relaxation and self-care.
+            Give the gift of beauty, relaxation and self-care
           </p>
 
           <button className="giftBtn">Buy Now</button>

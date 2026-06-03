@@ -60,7 +60,7 @@ export default function Gallery() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="bag">
+    <section ref={sectionRef} className="bag" id="gallery">
       <div className="bagContainer">
 
         {/* TITLE */}

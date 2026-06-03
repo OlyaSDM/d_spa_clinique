@@ -127,8 +127,11 @@ export default function Header() {
 
         <nav className="nav">
           <a href="#home">Home</a>
+                    <a href="#about">About</a>
           <a href="#services">Services</a>
-          <a href="#about">About</a>
+          <a href="#reviews">Reviews</a>
+                    <a href="#gallery">Gallery</a>
+
           <a href="#contact">Contact</a>
         </nav>
 
@@ -147,14 +150,20 @@ export default function Header() {
         <a href="#home" onClick={() => setMenuOpen(false)}>
           Home
         </a>
-
-        <a href="#services" onClick={() => setMenuOpen(false)}>
-          Services
-        </a>
-
         <a href="#about" onClick={() => setMenuOpen(false)}>
           About
         </a>
+        <a href="#services" onClick={() => setMenuOpen(false)}>
+          Services
+        </a>
+                <a href="#reviews" onClick={() => setMenuOpen(false)}>
+          Reviews
+        </a>
+                        <a href="#gallery" onClick={() => setMenuOpen(false)}>
+          Gallery
+        </a>
+
+
 
         <a href="#contact" onClick={() => setMenuOpen(false)}>
           Contact

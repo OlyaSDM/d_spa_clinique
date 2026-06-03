@@ -15,6 +15,18 @@
     --sandy: #e7c9af;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+#about,
+#services,
+#reviews,
+#gallery,
+#contact {
+  scroll-margin-top: 120px;
+}
+
 
 @font-face {
   font-family: 'GT Super';

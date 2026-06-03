@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./Loader.css";
 
-import logo from "../../assets/logo/logo.png";
+import logo from "/logo/logo.png";
 
 export default function Loader({ onFinish }: { onFinish: () => void }) {
   const [exit, setExit] = useState(false);

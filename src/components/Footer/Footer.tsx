@@ -1,11 +1,16 @@
 import "./Footer.css";
+import {
+  FaFacebookF,
+  FaPhone,
+  FaMapMarkerAlt
+} from "react-icons/fa";
 
 export default function Footer() {
   return (
     <footer className="footer">
       <div className="footer__top">
         <div className="footer__brand">
-          <h2>D Spa Clinique</h2>
+          <h2>DSpaClinique</h2>
           <p>
             A space where beauty, care and calm meet in harmony
           </p>
@@ -18,11 +23,42 @@ export default function Footer() {
           <a href="#gallery">Gallery</a>
         </div>
 
-        <div className="footer__contact">
-          <p>123 Main Street</p>
-          <p>Los Angeles, CA</p>
-          <a href="tel:+10000000000">+1 (000) 000-0000</a>
-        </div>
+<div className="footer__contact">
+
+  <div className="footer__contact-item">
+    <FaMapMarkerAlt />
+    <div>
+      <p>9410 Anderson Mill Rd #1AB</p>
+      <p>Austin, TX 78729</p>
+    </div>
+  </div>
+
+  <div className="footer__contact-item">
+    <FaPhone />
+    <a href="tel:+15121234567">(512) 123-4567</a>
+  </div>
+
+  <div className="footer__socials">
+<a
+  href="https://www.instagram.com/d_spa_clinique/"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Instagram"
+>
+  <img src="/logo/insta.png" alt="Instagram" />
+</a>
+
+    <a
+      href="https://facebook.com/"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Facebook"
+    >
+      <FaFacebookF />
+    </a>
+  </div>
+
+</div>
       </div>
 
       <div className="footer__bottom">

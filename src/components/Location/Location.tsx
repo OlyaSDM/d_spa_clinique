@@ -2,33 +2,33 @@ import "./Location.css";
 
 export default function Location() {
   return (
-<section className="location">
-  <div className="location__overlay">
-    <span>LOCATION</span>
+    <section className="location">
+      <div className="location__overlay">
+        <span>LOCATION</span>
 
-    <h2>DSpaClinique</h2>
+        <h2>DSpaClinique</h2>
 
-    <p>
-      12591 Research Blvd, Suite 203
-      <br />
-      Austin, TX 78759
-    </p>
+        <p>
+          9410 Anderson Mill Rd #1AB
+          <br />
+          Austin, TX 78729
+        </p>
 
-    <a
-      href="https://maps.google.com/?q=30.4502476,-97.786808"
-      target="_blank"
-      rel="noreferrer"
-    >
-      Get Directions
-    </a>
-  </div>
+        <a
+          href="https://maps.google.com/?q=9410+Anderson+Mill+Rd+1AB,+Austin,+TX+78729"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Get Directions
+        </a>
+      </div>
 
 <iframe
   title="DSpaClinique"
-  src="https://www.google.com/maps?q=30.4502476,-97.786808&z=16&output=embed"
+  src="https://www.google.com/maps?q=30.3919,-97.7516&z=16&output=embed"
   loading="lazy"
   allowFullScreen
 />
-</section>
+    </section>
   );
 }

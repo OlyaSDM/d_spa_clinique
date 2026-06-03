@@ -80,8 +80,8 @@
 
 import { useEffect, useState } from "react";
 import "./Header.css";
-import logoWhite from "../../assets/logo/logo_w.png";
-import logoDark from "../../assets/logo/logo.png";
+import logoWhite from "/logo/logo_w.png";
+import logoDark from "/logo/logo.png";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);

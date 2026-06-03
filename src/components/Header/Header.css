@@ -296,11 +296,12 @@
 
 @media (max-width: 900px) {
   .header {
-    padding: 10px 24px;
+    padding: 10px 20px;
   }
 
   .logo img {
     height: 72px;
+    margin-left: -26%;
   }
 
   .nav {
@@ -311,3 +312,4 @@
     display: block;
   }
 }
+

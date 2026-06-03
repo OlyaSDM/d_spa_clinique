@@ -46,7 +46,7 @@ const observer = new IntersectionObserver(
   </div>
 
   <div className="about-mask">
-    <p className="about-bio">
+    <p className="about-bio bot">
 
 I began my career in medicine as a Pediatrician and Neonatologist before following my passion for wellness, skincare, and therapeutic care. This journey led me to become a certified Esthetician and licensed Massage Therapist.
 

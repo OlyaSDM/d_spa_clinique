@@ -72,17 +72,28 @@
   .footer__top {
     grid-template-columns: 1fr;
     gap: 2.5rem;
+    text-align: center;
   }
 
   .footer__brand h2 {
     font-size: 2.2rem;
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
   }
 
   .footer__bottom {
     flex-direction: column;
+    text-align: center;
     gap: 8px;
   }
   
+
+  .footer__brand p {
+    text-align: center;
+      max-width: 460px;
+
+  }
 
 .footer {
   padding: 3rem 6vw 2rem;

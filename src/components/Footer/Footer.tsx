@@ -7,7 +7,7 @@ export default function Footer() {
         <div className="footer__brand">
           <h2>D Spa Clinique</h2>
           <p>
-            A space where beauty, care and calm meet in harmony.
+            A space where beauty, care and calm meet in harmony
           </p>
         </div>
 

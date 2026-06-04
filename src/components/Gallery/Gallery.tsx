@@ -5,25 +5,24 @@ import "./Gallery.css";
 const items = [
   {
     type: "ba",
-    title: "Hydra Facial",
+    title: "Men's Facial",
     before: "images/befor.jpg",
     after: "images/after.jpg",
   },
   {
     type: "image",
-    title: "Acne Treatment",
-    src: "images/photo_g.jpg",
-  },
-  {
-    type: "ba",
-    title: "Skin Rejuvenation",
-    before: "images/b.jpg",
-    after: "images/a.jpg",
+    title: "Facial",
+    src: "images/facial1.jpg",
   },
   {
     type: "image",
-    title: "Facial Therapy",
-    src: "images/photo_g.jpg",
+    title: "Facial",
+    src: "images/facial_led.jpg",
+  },
+  {
+    type: "image",
+    title: "Comprehensive Facial Cleansing",
+    src: "images/facial.jpg",
   },
   {
     type: "ba",
@@ -31,11 +30,16 @@ const items = [
     before: "images/b.jpg",
     after: "images/a.jpg",
   },
+    {
+    type: "image",
+    title: "Body Cupping",
+    src: "images/body_cupping.jpg",
+  },
   {
     type: "ba",
-    title: "Hydra Facial",
-    before: "images/befor.jpg",
-    after: "images/after.jpg",
+    title: "Skin Rejuvenation",
+    before: "images/befor2.jpg",
+    after: "images/after2.jpg",
   },
 ];
 

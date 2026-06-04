@@ -18,9 +18,12 @@ export default function Footer() {
 
         <div className="footer__nav">
           <a href="#home">Home</a>
-          <a href="#about">About</a>
+                    <a href="#about">About</a>
           <a href="#services">Services</a>
-          <a href="#gallery">Gallery</a>
+          <a href="#reviews">Reviews</a>
+                    <a href="#gallery">Gallery</a>
+
+          <a href="#contact">Contact</a>
         </div>
 
 <div className="footer__contact">
@@ -62,7 +65,7 @@ export default function Footer() {
       </div>
 
       <div className="footer__bottom">
-        <span>© {new Date().getFullYear()} D Spa Clinique</span>
+        <span>© {new Date().getFullYear()} DSpaClinique</span>
         <span>All rights reserved</span>
       </div>
     </footer>

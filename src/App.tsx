@@ -108,6 +108,8 @@ import Gallery from "./components/Gallery/Gallery";
 import GiftCertificatePage from "./components/Gift/GiftCertificatePage";
 import Location from "./components/Location/Location";
 import Footer from "./components/Footer/Footer";
+import ScrollTop from './components/Scroll/Scroll'
+
 
 
 
@@ -187,6 +189,7 @@ useEffect(() => {
             <GiftCertificatePage />
 <Location />    
 <Footer />
+<ScrollTop />
       </main>
         </>
       )}

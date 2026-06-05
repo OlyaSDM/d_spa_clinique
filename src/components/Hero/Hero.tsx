@@ -68,7 +68,7 @@ export default function Hero() {
         </div>
 
         <div className="hero-description">
-          <h3 className="hero-title">The gentle space for your skin, body & inner calm</h3>
+          <h3 className="hero-title">The gentle space for your body, skin & inner calm</h3>
 
           <p className="hero-text hero-slogan">
   <span>Sculpt</span>

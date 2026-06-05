@@ -3,35 +3,42 @@ import "./Loader.css";
 
 import logo from "/logo/logo.png";
 
-export default function Loader({ onFinish }: { onFinish: () => void }) {
+type LoaderProps = {
+  onFinish: () => void;
+};
+
+export default function Loader({ onFinish }: LoaderProps) {
   const [exit, setExit] = useState(false);
 
-useEffect(() => {
-  document.body.style.overflow = "hidden";
+  useEffect(() => {
+    let exitTimer: number;
+    let finishTimer: number;
 
-  const t1 = setTimeout(() => setExit(true), 2000);
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
 
-  const t2 = setTimeout(() => {
-    document.body.style.overflow = "auto";
-    onFinish();
-  }, 2800);
+    exitTimer = window.setTimeout(() => {
+      setExit(true);
+    }, 2000);
 
-  return () => {
-    clearTimeout(t1);
-    clearTimeout(t2);
-    document.body.style.overflow = "auto";
-  };
-}, []);
+    finishTimer = window.setTimeout(() => {
+      document.body.style.overflow = originalOverflow || "auto";
+      onFinish();
+    }, 2800);
+
+    return () => {
+      window.clearTimeout(exitTimer);
+      window.clearTimeout(finishTimer);
+      document.body.style.overflow = originalOverflow || "auto";
+    };
+  }, [onFinish]);
 
   return (
     <div className={`loader ${exit ? "exit" : ""}`}>
       <div className="loader__inner">
         <div className="loader__logo">
           <img src={logo} alt="logo" />
-                  
-
         </div>
-{/* <div className="loader__line" /> */}
       </div>
     </div>
   );

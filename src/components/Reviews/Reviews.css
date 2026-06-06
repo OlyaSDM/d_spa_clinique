@@ -70,7 +70,7 @@
 .review-text::after {
   position: absolute;
   font-size: 120px;
-  color: rgba(170, 196, 203, 0.25);
+  color: rgba(120, 163, 169, 0.3);
   font-family: serif;
 }
 

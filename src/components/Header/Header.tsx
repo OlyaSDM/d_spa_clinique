@@ -80,7 +80,7 @@
 
 import { useEffect, useState } from "react";
 import "./Header.css";
-import logoWhite from "/logo/logo_w.png";
+import logoWhite from "/logo/logo.png";
 import logoDark from "/logo/logo.png";
 
 export default function Header() {
@@ -113,14 +113,13 @@ export default function Header() {
 
   return (
     <>
-      <header className={`header ${scrolled ? "scrolled" : ""}`}>
-        
-        <div className="logo">
-          <img
-            src={scrolled ? logoWhite : logoDark}
-            alt="D SPA"
-          />
-        </div>
+<header className={`header ${scrolled ? "scrolled" : ""} ${menuOpen ? "menu-open" : ""}`}>        
+<div className={`logo ${menuOpen ? "hidden" : ""}`}>
+  <img
+    src={scrolled ? logoWhite : logoDark}
+    alt="D SPA"
+  />
+</div>
 
         <nav className="nav">
           <a href="#home">Home</a>

@@ -128,7 +128,7 @@ export default function ClinicVideo() {
       ([entry]) => {
         setInView(entry.isIntersecting);
       },
-      { threshold: 0.4 } // когда 40% блока видно
+      { threshold: 0.4 } 
     );
 
     observer.observe(el);

@@ -1,5 +1,3 @@
-
-/* ================= WRAPPER ================= */
 .services-wrapper {
   padding: 40px 8vw 0;
   background: var(--bg_color);
@@ -7,7 +5,6 @@
   position: relative;
 }
 
-/* ================= TITLE MASK ================= */
 .services-title-mask {
   overflow: hidden;
   text-align: center;
@@ -31,7 +28,6 @@ text-align: center;
   transform: translateY(0%);
 }
 
-/* ================= GRID ================= */
 .services-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -39,7 +35,6 @@ text-align: center;
   padding: 20px 0 120px;
 }
 
-/* ================= CARD ================= */
 .service-tile {
   position: relative;
   overflow: hidden;
@@ -65,8 +60,6 @@ color: var(--text);
   transform: translateY(0);
 }
 
-/* ================= IMAGE ================= */
-/* ================= IMAGE (SOFT CINEMATIC ZOOM) ================= */
 .service-tile::before {
   content: "";
   position: absolute;
@@ -83,19 +76,15 @@ color: var(--text);
   will-change: transform;
 }
 
-/* стартовый reveal zoom */
 .service-tile.visible::before {
   transform: scale(1.02);
 }
 
-/* hover zoom (мягкий, не дерганый) */
 .service-tile:hover::before {
   transform: scale(1.12);
 }
 
 
-
-/* ================= TEXT ================= */
 .service-tile h3 {
   text-align: center;
   font-size: 28px;
@@ -120,7 +109,6 @@ color: var(--text);
   opacity: 0.85;
 }
 
-/* ================= BUTTON (ALWAYS VISIBLE) ================= */
 .service-more {
   position: absolute;
   bottom: 48px;
@@ -150,7 +138,6 @@ color: var(--text);
   position: absolute;
   inset: 0;
 
-  /* base dark layer */
   background: linear-gradient(
     to top,
     rgba(0,0,0,0.72) 0%,
@@ -163,7 +150,6 @@ color: var(--text);
   transition: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* hover = EVEN deeper cinematic feel */
 .service-tile:hover::after {
   background: linear-gradient(
     to top,
@@ -179,7 +165,6 @@ color: var(--text);
 }
 
 
-/* ================= CURSOR ================= */
 .custom-cursor {
   position: fixed;
   top: 0;

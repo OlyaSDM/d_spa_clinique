@@ -27,7 +27,7 @@
   width: 100%;
 }
 
-/* ================= TITLE ================= */
+/*  TITLE  */
 
 .services-title-mask {
   overflow: hidden;
@@ -55,7 +55,7 @@
 .gallery {
   color: var(--accent_bright);
 }
-/* ================= GALLERY ================= */
+/*  GALLERY  */
 
 .galleryWrap {
   overflow: hidden;
@@ -84,7 +84,7 @@
   }
 }
 
-/* ================= CARD ================= */
+/* CARD */
 
 .bagCard {
   position: relative;
@@ -139,7 +139,7 @@
 .bagCard:hover .bagTitle {
   transform: translateY(0);
 }
-/* ================= SIMPLE IMAGE ================= */
+/*  SIMPLE IMAGE  */
 
 .simpleImage {
   width: 100%;
@@ -148,7 +148,7 @@
   object-fit: cover;
 }
 
-/* ================= BEFORE AFTER ================= */
+/*BEFORE AFTER  */
 
 .slider {
   position: relative;
@@ -213,7 +213,7 @@
   box-shadow: 0 10px 30px rgba(0,0,0,0.12);
 }
 
-/* ================= MOBILE ================= */
+/*  MOBILE */
 
 @media (max-width: 768px) {
   .bag {

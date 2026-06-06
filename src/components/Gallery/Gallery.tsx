@@ -67,12 +67,10 @@ export default function Gallery() {
     <section ref={sectionRef} className="bag" id="gallery">
       <div className="bagContainer">
 
-        {/* TITLE */}
       <div className={`services-title-mask ${visible ? "open" : ""}`}>
         <h2 className="gallery-title ">Gallery</h2>
       </div>
 
-        {/* MOVING GALLERY */}
         <div className="galleryWrap">
           <div className="bagGrid">
 

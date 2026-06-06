@@ -138,7 +138,6 @@
 
 
 
-/* ================= SECTION ================= */
 
 .experience {
   display: flex;
@@ -156,7 +155,6 @@
 
 }
 
-/* ================= LEFT ================= */
 
 .experience-left {
   flex: 1;
@@ -170,7 +168,6 @@
   max-width: 820px;
 }
 
-/* ================= ANIMATION ================= */
 
 .exp-mask {
   overflow: hidden;
@@ -194,7 +191,6 @@
   opacity: 1;
 }
 
-/* ================= TEXT ================= */
 
 .exp-line {
   margin: 0;
@@ -215,7 +211,6 @@
   color: #6b6b6b;
 }
 
-/* extra lines */
 
 .extra-lines {
   display: flex;
@@ -233,7 +228,6 @@
   font-size: 34px;
 }
 
-/* ================= RIGHT ================= */
 
 .experience-right {
   flex: 1;
@@ -243,7 +237,6 @@
   align-self: center;
 }
 
-/* ================= VIDEO ================= */
 
 .video-wrap {
   width: min(620px, 100%);
@@ -284,7 +277,6 @@
   transform: scale(1.06);
 }
 
-/* ================= MOBILE FIX (ГЛАВНОЕ) ================= */
 @media (max-width: 1500px) { 
   .extra-lines {
   display: flex;
@@ -327,6 +319,6 @@
   }
 
   .exp-inner {
-    transform: translate3d(0, 45%, 0); /* 🔥 мягче анимация на мобилке */
+    transform: translate3d(0, 45%, 0); 
   }
 }

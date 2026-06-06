@@ -5,7 +5,6 @@ export default function GiftCertificatePage() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const [visible, setVisible] = useState(false);
 
-  // ================== REVEAL TITLE ==================
   useEffect(() => {
     const el = sectionRef.current;
     if (!el) return;
@@ -29,7 +28,6 @@ const observer = new IntersectionObserver(
       <div className="giftContainer">
 
         <div className="giftText">
-          {/* Animated Title */}
           <div className={`services-title-mask ${visible ? "open" : ""}`}>
             <h2 className="gift-title ">Gift Certificate</h2>
           </div>
@@ -38,7 +36,7 @@ const observer = new IntersectionObserver(
             Give the gift of beauty, relaxation and self-care
           </p>
 
-          <button className="giftBtn">Buy Now</button>
+          <button className="giftBtn">Get Now</button>
         </div>
 
         <div className={`giftCard ${visible ? "show" : ""}`}>

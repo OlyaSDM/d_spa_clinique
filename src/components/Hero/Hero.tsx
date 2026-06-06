@@ -16,21 +16,18 @@ export default function Hero() {
       ([entry]) => {
         if (entry.isIntersecting) {
 
-          // LETTERS
           letters.forEach((letter, index) => {
             setTimeout(() => {
               letter.classList.add("show");
             }, index * 260);
           });
 
-          // TEXT
           texts.forEach((text, index) => {
             setTimeout(() => {
               text.classList.add("show");
             }, 700 + index * 180);
           });
 
-          // BUTTON (последний)
           setTimeout(() => {
             button?.classList.add("show");
           }, 1200);
@@ -77,7 +74,6 @@ export default function Hero() {
   <span>Glow</span>
 </p>
 
-          {/* BUTTON WRAP */}
           <div className="hero-btn-wrap">
             <button className="hero-btn">
               Book now

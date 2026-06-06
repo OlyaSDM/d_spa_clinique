@@ -46,7 +46,6 @@ export default function Reviews() {
 
   const isLongText = (text: string) => text.length > 380;
 
-  /* ================= REVEAL ================= */
   useEffect(() => {
     const el = sectionRef.current;
     if (!el) return;
@@ -60,17 +59,15 @@ export default function Reviews() {
     return () => observer.disconnect();
   }, []);
 
-  /* ================= AUTOPLAY ================= */
   useEffect(() => {
     const interval = setInterval(() => {
       setActive((p) => (p + 1) % reviews.length);
-      setExpanded(null); // закрываем read more при смене
+      setExpanded(null); 
     }, 15000);
 
     return () => clearInterval(interval);
   }, []);
 
-  /* ================= DYNAMIC HEIGHT ================= */
   useEffect(() => {
     const slider = sliderRef.current;
     if (!slider) return;

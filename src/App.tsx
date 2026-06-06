@@ -20,9 +20,7 @@ import "./App.css";
 export default function App() {
   const [loading, setLoading] = useState(true);
 
-  // =========================
-  // 🔥 LENIS + SCROLL RESTORE
-  // =========================
+
   useEffect(() => {
     const lenis = new Lenis({
       duration: 1.4,
@@ -34,7 +32,6 @@ export default function App() {
 
     const savedScroll = sessionStorage.getItem("scrollY");
 
-    // важно: восстановление после инициализации
     requestAnimationFrame(() => {
       if (savedScroll) {
         const y = Number(savedScroll);
@@ -75,9 +72,7 @@ export default function App() {
     };
   }, []);
 
-  // =========================
-  // 💾 SAVE SCROLL POSITION
-  // =========================
+
   useEffect(() => {
     const saveScroll = () => {
       sessionStorage.setItem("scrollY", String(window.scrollY));
@@ -90,9 +85,7 @@ export default function App() {
     };
   }, []);
 
-  // =========================
-  // 🔒 LOCK BODY DURING LOADER
-  // =========================
+
   useEffect(() => {
     document.body.style.overflow = loading ? "hidden" : "auto";
   }, [loading]);

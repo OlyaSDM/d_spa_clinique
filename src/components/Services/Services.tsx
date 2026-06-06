@@ -21,7 +21,7 @@ const services: Service[] = [
   {
     title: "Facial",
     desc: "Advanced skin hydration & glow",
-    img: "/images/.webp",
+    img: "/images/facial.png",
   },
 ];
 
@@ -33,7 +33,6 @@ export default function Services() {
   const [cursorActive, setCursorActive] = useState(false);
   const [visible, setVisible] = useState(false);
 
-  /* ================= CURSOR ================= */
   useEffect(() => {
     const section = sectionRef.current;
     if (!section) return;
@@ -63,7 +62,6 @@ export default function Services() {
     return () => section.removeEventListener("mousemove", handleMove);
   }, []);
 
-  /* ================= REVEAL ================= */
   useEffect(() => {
     const grid = gridRef.current;
     if (!grid) return;
@@ -86,7 +84,6 @@ export default function Services() {
       onMouseLeave={() => setCursorActive(false)}
       id="services"
     >
-      {/* CURSOR */}
       <div
         className={`custom-cursor ${cursorActive ? "active" : ""}`}
         style={{
@@ -96,12 +93,10 @@ export default function Services() {
         <span>VIEW</span>
       </div>
 
-      {/* TITLE */}
       <div className={`services-title-mask ${visible ? "open" : ""}`}>
         <h2 className="services-title">Services</h2>
       </div>
 
-      {/* GRID */}
       <div ref={gridRef} className="services-grid">
         {services.map((item, i) => (
           <div

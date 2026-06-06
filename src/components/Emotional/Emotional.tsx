@@ -36,18 +36,14 @@ export default function QuoteReveal() {
 
         const start = i * step;
 
-        // 🔥 ВАЖНО: увеличили диапазон, чтобы последняя строка успевала
         const end = start + 0.95;
 
         let p = (current - start) / (end - start);
 
-        // clamp
         p = Math.max(0, Math.min(1, p));
 
-        // softer easing (без "съедания" opacity)
         const eased = 1 - Math.pow(1 - p, 3);
 
-        // гарантия финального состояния
         const final = i === lines.length - 1 ? Math.min(1, eased * 1.05) : eased;
 
         const inner = line.querySelector<HTMLElement>(".q-line-inner");
@@ -76,7 +72,7 @@ inner.style.filter = `blur(${(1 - final) * 6}px)`;
     <div className="quote-wrap" ref={ref}>
       <h3 className="q-line">
         <span className="q-line-inner upp">
-          DSpaClinique is a space
+          <span className="D">DSpaClinique</span> is a space
         </span>
       </h3>
 

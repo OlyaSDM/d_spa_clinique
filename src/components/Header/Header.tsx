@@ -87,10 +87,8 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // resize tracker
   useEffect(() => {
     const onResize = () => {
-      // закрываем меню при переходе на desktop
       if (window.innerWidth > 900) {
         setMenuOpen(false);
       }
@@ -101,7 +99,6 @@ export default function Header() {
     return () => window.removeEventListener("resize", onResize);
   }, []);
 
-  // scroll effect для desktop + mobile
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 50);

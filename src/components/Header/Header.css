@@ -55,9 +55,7 @@
 .header.scrolled {
   background-color: rgba(120, 163, 169, 0.6);
 }
-/* =========================
-   LOGO
-========================= */
+
 .logo {
   flex-shrink: 0;
 }
@@ -69,9 +67,7 @@
 
 }
 
-/* =========================
-   NAV
-========================= */
+
 
 .nav {
   display: flex;
@@ -94,7 +90,6 @@
   color: var(--white);
 }
 
-/* underline */
 .nav a::after {
   content: "";
   position: absolute;
@@ -119,9 +114,7 @@
   width: 100%;
 }
 
-/* =========================
-   BURGER
-========================= */
+
 
 .burger {
   width: 42px;
@@ -136,13 +129,11 @@
   transition: transform 0.25s ease, opacity 0.25s ease;
 }
 
-/* hover (только для НЕ active) */
 .burger:hover:not(.active) {
   transform: scale(1.08);
   opacity: 0.7;
 }
 
-/* lines */
 .burger span {
   position: absolute;
   left: 0;
@@ -160,7 +151,6 @@
     left 0.35s ease;
 }
 
-/* position */
 .burger span:nth-child(1) {
   top: 14px;
 }
@@ -169,13 +159,11 @@
   top: 26px;
 }
 
-/* hover нижней линии */
 .burger:hover:not(.active) span:nth-child(2) {
   width: 65%;
   left: 35%;
 }
 
-/* X animation */
 .burger.active span:nth-child(1) {
   transform: rotate(45deg);
   top: 20px;
@@ -186,7 +174,6 @@
   top: 20px;
 }
 
-/* цвет */
 .header.scrolled .burger span {
   background-color: var(--white);
 }
@@ -203,9 +190,6 @@
   transform: rotate(45deg);
 }
 
-/* =========================
-   MOBILE MENU
-========================= */
 
 .mobile-menu {
   position: fixed;
@@ -276,13 +260,11 @@
   }
 }
 
-/* hover */
 .mobile-menu a:hover {
   transform: translateY(-2px);
   opacity: 0.85;
 }
 
-/* underline */
 .mobile-menu a::after {
   content: "";
   position: absolute;
@@ -303,9 +285,6 @@
   width: 100%;
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
 
 @media (max-width: 900px) {
   .header {

@@ -6,12 +6,21 @@ import { Link, useLocation } from "react-router-dom";
 
 type SectionId = "about" | "services" | "reviews" | "gallery" | "contact";
 
+const navItems: SectionId[] = [
+  "about",
+  "services",
+  "reviews",
+  "gallery",
+  "contact",
+];
+
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
   const location = useLocation();
 
+  // scroll effect for header style
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 50);
@@ -23,16 +32,12 @@ export default function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // close menu on route change
   useEffect(() => {
     setMenuOpen(false);
   }, [location]);
 
-  const goToSection = (id: SectionId) => {
-    if (location.pathname !== "/") {
-      window.location.href = `/?scroll=${id}`;
-      return;
-    }
-
+  const scrollToSection = (id: SectionId) => {
     const el = document.getElementById(id);
 
     if (el) {
@@ -43,6 +48,22 @@ export default function Header() {
     }
   };
 
+  const handleNavClick = (id: SectionId) => {
+    // 1. закрываем меню сразу
+    setMenuOpen(false);
+
+    // 2. если мы НЕ на главной — переходим с параметром
+    if (location.pathname !== "/") {
+      window.location.href = `/?scroll=${id}`;
+      return;
+    }
+
+    // 3. даём React обновить UI и потом скроллим
+    requestAnimationFrame(() => {
+      scrollToSection(id);
+    });
+  };
+
   return (
     <>
       <header
@@ -50,20 +71,19 @@ export default function Header() {
           menuOpen ? "menu-open" : ""
         }`}
       >
-<Link to="/" className={`logo ${menuOpen ? "hidden" : ""}`}>
-  <img src={scrolled ? logoWhite : logoDark} alt="D SPA" />
-</Link>
+        <Link to="/" className={`logo ${menuOpen ? "hidden" : ""}`}>
+          <img src={scrolled ? logoWhite : logoDark} alt="D SPA" />
+        </Link>
 
         <nav className="nav">
-  <Link to="/">Home</Link>
+          <Link to="/">Home</Link>
 
-  <a onClick={() => goToSection("about")}>About</a>
-  <a onClick={() => goToSection("services")}>Services</a>
-
-  <a onClick={() => goToSection("reviews")}>Reviews</a>
-  <a onClick={() => goToSection("gallery")}>Gallery</a>
-  <a onClick={() => goToSection("contact")}>Contact</a>
-</nav>
+          {navItems.map((item) => (
+            <a key={item} onClick={() => handleNavClick(item)}>
+              {item.charAt(0).toUpperCase() + item.slice(1)}
+            </a>
+          ))}
+        </nav>
 
         <div
           className={`burger ${menuOpen ? "active" : ""}`}
@@ -75,11 +95,11 @@ export default function Header() {
       </header>
 
       <div className={`mobile-menu ${menuOpen ? "open" : ""}`}>
-        <a onClick={() => goToSection("about")}>About</a>
-        <a onClick={() => goToSection("services")}>Services</a>
-        <a onClick={() => goToSection("reviews")}>Reviews</a>
-        <a onClick={() => goToSection("gallery")}>Gallery</a>
-        <a onClick={() => goToSection("contact")}>Contact</a>
+        {navItems.map((item) => (
+          <a key={item} onClick={() => handleNavClick(item)}>
+            {item.charAt(0).toUpperCase() + item.slice(1)}
+          </a>
+        ))}
       </div>
     </>
   );

@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Lenis from "lenis";
-import { Routes, Route } from "react-router-dom";
 
 import Header from "./components/Header/Header";
 import Loader from "./components/Loader/Loader";
@@ -15,6 +15,12 @@ import "./App.css";
 export default function App() {
   const [loading, setLoading] = useState(true);
 
+  const lenisRef = useRef<Lenis | null>(null);
+  const location = useLocation();
+
+  // =========================
+  // INIT LENIS
+  // =========================
   useEffect(() => {
     const lenis = new Lenis({
       duration: 1.4,
@@ -24,19 +30,51 @@ export default function App() {
       touchMultiplier: 1.1,
     });
 
-function raf(time: number) {
-  lenis.raf(time);
-  requestAnimationFrame(raf);
-}
+    lenisRef.current = lenis;
+
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
 
     requestAnimationFrame(raf);
 
-    return () => lenis.destroy();
+    return () => {
+      lenis.destroy();
+      lenisRef.current = null;
+    };
   }, []);
 
+  // =========================
+  // LOCK SCROLL DURING LOADER
+  // =========================
   useEffect(() => {
     document.body.style.overflow = loading ? "hidden" : "auto";
   }, [loading]);
+
+  // =========================
+  // RESET SCROLL ON ROUTE CHANGE
+  // =========================
+  useEffect(() => {
+    const lenis = lenisRef.current;
+
+    // stop smooth scroll first (important)
+    if (lenis) {
+      lenis.stop();
+    }
+
+    // hard reset
+    window.scrollTo(0, 0);
+
+    // restart lenis after DOM updates
+    const timeout = setTimeout(() => {
+      if (lenis) {
+        lenis.start();
+      }
+    }, 50);
+
+    return () => clearTimeout(timeout);
+  }, [location.pathname]);
 
   return (
     <>

@@ -152,9 +152,13 @@
 .review-more:hover {
   opacity: 0.6;
 }
-.review-more {
 
+@media (max-width: 900px) {
+.reviews{
+  margin-top: 120px;
 }
+}
+
 @media (max-width: 768px) {
   .reviews {
     padding: 20px 1vw;
@@ -204,6 +208,6 @@
 /* very small screens fix */
 @media (max-width: 568px) {
   .dots {
-    margin-top: 100px;
+    margin-top: 40px;
   }
 }

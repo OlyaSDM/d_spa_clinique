@@ -36,8 +36,14 @@ const observer = new IntersectionObserver(
             Give the gift of beauty, relaxation and self-care
           </p>
 
-          <button className="giftBtn">Get Now</button>
-        </div>
+<a
+  className="giftBtn"
+  href="https://squareup.com/gift/your-link-here"
+  target="_blank"
+  rel="noreferrer"
+>
+  Get Now
+</a>        </div>
 
         <div className={`giftCard ${visible ? "show" : ""}`}>
           <img src="images/gift.png" alt="Gift Certificate" />

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import "./Services.css";
+import { Link } from "react-router-dom";
 
 type Service = {
   title: string;
@@ -19,7 +20,7 @@ const services: Service[] = [
     img: "/images/face_massage.png",
   },
   {
-    title: "Facial",
+    title: "Facial Treatments",
     desc: "Advanced skin hydration & glow",
     img: "/images/facial.png",
   },
@@ -112,8 +113,9 @@ export default function Services() {
             <h3>{item.title}</h3>
             <p>{item.desc}</p>
 
-            <button className="service-more">More</button>
-          </div>
+<Link to="/services" className="service-more">
+  More
+</Link>          </div>
         ))}
       </div>
     </section>

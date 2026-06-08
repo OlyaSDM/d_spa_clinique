@@ -43,7 +43,7 @@
 
 
 .services-nav {
-  position: sticky;
+  /* position: sticky; */
   top: 100px;
   display: flex;
   flex-wrap: wrap;

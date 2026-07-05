@@ -12,35 +12,36 @@ const items = [
   {
     type: "image",
     title: "Facial",
-    src: "images/facial1.jpg",
+    src: "images/facial_b.jpg",
   },
   {
     type: "image",
     title: "Facial",
     src: "images/facial_led.jpg",
   },
+
   {
     type: "image",
     title: "Comprehensive Facial Cleansing",
     src: "images/facial.jpg",
   },
-  {
-    type: "ba",
-    title: "Glow Treatment",
-    before: "images/b.jpg",
-    after: "images/a.jpg",
-  },
     {
-    type: "image",
-    title: "Body Cupping",
-    src: "images/body_cupping.jpg",
-  },
-  {
     type: "ba",
     title: "Skin Rejuvenation",
     before: "images/befor2.jpg",
     after: "images/after2.jpg",
   },
+  {
+    type: "image",
+    title: "Glow Treatment",
+    src: "images/glow.jpg",
+  },
+    {
+    type: "image",
+    title: "Body Cupping",
+    src: "images/body.jpg",
+  },
+  
 ];
 
 export default function Gallery() {

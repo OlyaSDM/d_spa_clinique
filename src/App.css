@@ -91,3 +91,32 @@ html {
     background-position: center 30%;
   }
 } 
+
+.music-button {
+  position: fixed;
+  right: 30px;
+  bottom: 90px;
+
+  width: 42px;
+  height: 42px;
+
+  border-radius: 50%;
+  border: 1px solid rgba(120, 163, 169, 0.4);
+
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(10px);
+
+  color: #78A3A9;
+
+  cursor: pointer;
+
+  font-size: 16px;
+
+  z-index: 9999;
+
+  transition: transform .3s ease;
+}
+
+.music-button:hover {
+  transform: scale(1.1);
+}

@@ -42,7 +42,7 @@ export default function App() {
       if (!audio) return;
 
 
-      audio.volume = 0.12;
+      audio.volume = 0.6;
 
 
       audio.play()

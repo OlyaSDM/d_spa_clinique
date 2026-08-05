@@ -23,24 +23,22 @@ export default function App() {
   // =========================
   // START BACKGROUND MUSIC
   // =========================
-  const startMusic = () => {
-    const audio = audioRef.current;
+const startMusic = () => {
+  const audio = audioRef.current;
 
-    if (!audio) return;
+  if (!audio) return;
 
+  const playAudio = () => {
     audio.volume = 0;
 
-    audio
-      .play()
+    audio.play()
       .then(() => {
         let volume = 0;
 
         const fade = setInterval(() => {
           volume += 0.02;
 
-          if (audio) {
-            audio.volume = volume;
-          }
+          audio.volume = volume;
 
           if (volume >= 0.25) {
             clearInterval(fade);
@@ -48,10 +46,26 @@ export default function App() {
         }, 100);
       })
       .catch((error) => {
-        console.log("Music autoplay blocked:", error);
+        console.log(error);
       });
+
+    document.removeEventListener("click", playAudio);
+    document.removeEventListener("touchstart", playAudio);
   };
 
+
+  document.addEventListener(
+    "click",
+    playAudio,
+    { once: true }
+  );
+
+  document.addEventListener(
+    "touchstart",
+    playAudio,
+    { once: true }
+  );
+};
 
   // =========================
   // INIT LENIS

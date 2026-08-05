@@ -16,7 +16,42 @@ export default function App() {
   const [loading, setLoading] = useState(true);
 
   const lenisRef = useRef<Lenis | null>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
   const location = useLocation();
+
+  // =========================
+  // START BACKGROUND MUSIC
+  // =========================
+  const startMusic = () => {
+    const audio = audioRef.current;
+
+    if (!audio) return;
+
+    audio.volume = 0;
+
+    audio
+      .play()
+      .then(() => {
+        let volume = 0;
+
+        const fade = setInterval(() => {
+          volume += 0.02;
+
+          if (audio) {
+            audio.volume = volume;
+          }
+
+          if (volume >= 0.25) {
+            clearInterval(fade);
+          }
+        }, 100);
+      })
+      .catch((error) => {
+        console.log("Music autoplay blocked:", error);
+      });
+  };
+
 
   // =========================
   // INIT LENIS
@@ -45,6 +80,7 @@ export default function App() {
     };
   }, []);
 
+
   // =========================
   // LOCK SCROLL DURING LOADER
   // =========================
@@ -52,21 +88,19 @@ export default function App() {
     document.body.style.overflow = loading ? "hidden" : "auto";
   }, [loading]);
 
+
   // =========================
   // RESET SCROLL ON ROUTE CHANGE
   // =========================
   useEffect(() => {
     const lenis = lenisRef.current;
 
-    // stop smooth scroll first (important)
     if (lenis) {
       lenis.stop();
     }
 
-    // hard reset
     window.scrollTo(0, 0);
 
-    // restart lenis after DOM updates
     const timeout = setTimeout(() => {
       if (lenis) {
         lenis.start();
@@ -76,14 +110,26 @@ export default function App() {
     return () => clearTimeout(timeout);
   }, [location.pathname]);
 
+
   return (
     <>
+      <audio
+        ref={audioRef}
+        src="/audio/relax.mp3"
+        loop
+      />
+
       <div className="global-bg">
         <img src="/images/bg.jpg" alt="background" />
       </div>
 
       {loading ? (
-        <Loader onFinish={() => setLoading(false)} />
+        <Loader
+          onFinish={() => {
+            setLoading(false);
+            startMusic();
+          }}
+        />
       ) : (
         <>
           <Header />

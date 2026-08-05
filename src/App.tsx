@@ -30,25 +30,48 @@ export default function App() {
 
 
 
-  // =========================
-  // START MUSIC AFTER LOADER
-  // =========================
-  useEffect(() => {
+// =========================
+// START MUSIC AFTER LOADER
+// =========================
+useEffect(() => {
 
-    if (!loading) {
+  if (!loading) {
 
-      const audio = audioRef.current;
+    const audio = audioRef.current;
 
-      if (!audio) return;
+    if (!audio) return;
 
 
-      audio.volume = 0.6;
+    audio.volume = 0;
 
+
+    const fadeIn = () => {
 
       audio.play()
         .then(() => {
 
           setMusicOn(true);
+
+
+          let volume = 0;
+
+
+          const fade = setInterval(() => {
+
+            volume += 0.01;
+
+            audio.volume = volume;
+
+
+            if (volume >= 0.08) {
+
+              clearInterval(fade);
+
+            }
+
+
+          }, 100);
+
 
         })
         .catch(() => {
@@ -56,9 +79,7 @@ export default function App() {
 
           const startOnClick = () => {
 
-            audio.play();
-
-            setMusicOn(true);
+            fadeIn();
 
 
           };
@@ -73,45 +94,104 @@ export default function App() {
 
         });
 
-
-    }
-
-
-  }, [loading]);
+    };
 
 
+    fadeIn();
 
 
+  }
 
-  // =========================
-  // TOGGLE MUSIC
-  // =========================
-  const toggleMusic = () => {
 
-    const audio = audioRef.current;
-
-    if (!audio) return;
+}, [loading]);
 
 
 
-    if (musicOn) {
 
-      audio.pause();
+// =========================
+// TOGGLE MUSIC
+// =========================
+const toggleMusic = () => {
 
-      setMusicOn(false);
+  const audio = audioRef.current;
 
-
-    } else {
-
-      audio.play();
-
-      setMusicOn(true);
-
-    }
-
-  };
+  if (!audio) return;
 
 
+
+  if (musicOn) {
+
+
+    let volume = audio.volume;
+
+
+    const fadeOut = setInterval(() => {
+
+
+      volume -= 0.01;
+
+
+      audio.volume = volume;
+
+
+
+      if (volume <= 0) {
+
+        clearInterval(fadeOut);
+
+        audio.pause();
+
+        setMusicOn(false);
+
+      }
+
+
+    }, 100);
+
+
+
+  } else {
+
+
+    audio.volume = 0;
+
+
+    audio.play()
+      .then(() => {
+
+
+        setMusicOn(true);
+
+
+        let volume = 0;
+
+
+        const fadeIn = setInterval(() => {
+
+
+          volume += 0.01;
+
+
+          audio.volume = volume;
+
+
+
+          if (volume >= 0.08) {
+
+            clearInterval(fadeIn);
+
+          }
+
+
+        }, 100);
+
+
+      });
+
+
+  }
+
+};
 
 
 

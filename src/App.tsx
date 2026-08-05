@@ -31,18 +31,18 @@ export default function App() {
 
 
   // =========================
-  // START BACKGROUND MUSIC
+  // START MUSIC AFTER LOADER
   // =========================
-  const startMusic = () => {
+  useEffect(() => {
 
-    const audio = audioRef.current;
+    if (!loading) {
 
-    if (!audio) return;
+      const audio = audioRef.current;
+
+      if (!audio) return;
 
 
-    const playAudio = () => {
-
-      audio.volume = 0;
+      audio.volume = 0.12;
 
 
       audio.play()
@@ -50,58 +50,35 @@ export default function App() {
 
           setMusicOn(true);
 
-
-          let volume = 0;
-
-
-          const fade = setInterval(() => {
-
-            volume += 0.01;
-
-            audio.volume = volume;
-
-
-            if (volume >= 0.12) {
-              clearInterval(fade);
-            }
-
-
-          }, 100);
-
-
         })
-        .catch((error) => {
+        .catch(() => {
 
-          console.log("Music error:", error);
+
+          const startOnClick = () => {
+
+            audio.play();
+
+            setMusicOn(true);
+
+
+          };
+
+
+          document.addEventListener(
+            "pointerdown",
+            startOnClick,
+            { once: true }
+          );
+
 
         });
 
 
-    };
-
-
-    document.addEventListener(
-      "pointerdown",
-      playAudio,
-      { once: true }
-    );
-
-  };
-
-
-
-  // =========================
-  // START MUSIC AFTER LOADER
-  // =========================
-  useEffect(() => {
-
-    if (!loading) {
-
-      startMusic();
-
     }
 
+
   }, [loading]);
+
 
 
 
@@ -114,6 +91,7 @@ export default function App() {
     const audio = audioRef.current;
 
     if (!audio) return;
+
 
 
     if (musicOn) {
@@ -132,6 +110,8 @@ export default function App() {
     }
 
   };
+
+
 
 
 
@@ -189,6 +169,7 @@ export default function App() {
 
 
 
+
   // =========================
   // LOCK SCROLL DURING LOADER
   // =========================
@@ -199,6 +180,8 @@ export default function App() {
 
 
   }, [loading]);
+
+
 
 
 
@@ -225,13 +208,11 @@ export default function App() {
 
     const timeout = setTimeout(() => {
 
-
       if (lenis) {
 
         lenis.start();
 
       }
-
 
     }, 50);
 
@@ -242,6 +223,8 @@ export default function App() {
 
 
   }, [location.pathname]);
+
+
 
 
 
@@ -260,6 +243,7 @@ export default function App() {
         loop
 
       />
+
 
 
 
@@ -327,7 +311,10 @@ export default function App() {
 
 
 
+
           <Footer />
+
+
 
 
 
@@ -337,7 +324,7 @@ export default function App() {
 
             onClick={toggleMusic}
 
-            aria-label="Toggle music"
+            aria-label="Toggle sound"
 
           >
 
@@ -349,7 +336,10 @@ export default function App() {
 
             }
 
+
           </button>
+
+
 
 
 

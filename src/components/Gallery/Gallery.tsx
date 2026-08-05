@@ -14,6 +14,12 @@ const items = [
     title: "Facial",
     src: "images/facial_b.jpg",
   },
+      {
+    type: "ba",
+    title: "Celluma",
+    before: "images/celluma.jpg",
+    after: "images/celluma_1.jpg",
+  },
   {
     type: "image",
     title: "Facial",

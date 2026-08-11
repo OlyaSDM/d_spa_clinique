@@ -15,15 +15,14 @@
   opacity: 0;
   transform: translateY(40px);
   transition:
-    opacity 1s cubic-bezier(.2,.8,.2,1),
-    transform 1s cubic-bezier(.2,.8,.2,1);
+    opacity 1s cubic-bezier(.2, .8, .2, 1),
+    transform 1s cubic-bezier(.2, .8, .2, 1);
 }
 
 .reveal.visible {
   opacity: 1;
   transform: translateY(0);
 }
-
 
 
 /* =========================
@@ -51,53 +50,45 @@
 }
 
 
-
 /* =========================
    NAVIGATION
 ========================= */
 
 .services-nav {
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:12px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
 
-  margin-bottom:80px;
+  margin-bottom: 80px;
 }
-
 
 .services-nav button {
+  background: transparent;
 
-  background:transparent;
+  border: 1px solid var(--accent_bright);
 
-  border:1px solid var(--accent_bright);
+  padding: 12px 22px;
 
-  padding:12px 22px;
+  cursor: pointer;
 
-  cursor:pointer;
+  font-size: 13px;
 
-  font-size:13px;
+  color: var(--text);
 
-  color:var(--text);
+  text-transform: uppercase;
 
-  text-transform:uppercase;
+  letter-spacing: 0.08em;
 
-  letter-spacing:.08em;
+  font-weight: 600;
 
-  font-weight:600;
-
-  transition:.35s ease;
+  transition: 0.35s ease;
 }
-
 
 .services-nav button:hover {
-
-  background:var(--accent_bright);
-
-  color:white;
-
+  background: var(--accent_bright);
+  color: white;
 }
-
 
 
 /* =========================
@@ -105,26 +96,16 @@
 ========================= */
 
 .service-category {
-
-  margin-bottom:110px;
-
+  margin-bottom: 110px;
 }
-
 
 .category-title {
-
-  font-size:44px;
-
-  font-weight:300;
-
-  color:var(--accent_bright);
-
-  text-align:center;
-
-  margin-bottom:45px;
-
+  font-size: 44px;
+  font-weight: 300;
+  color: var(--accent_bright);
+  text-align: center;
+  margin-bottom: 45px;
 }
-
 
 
 /* =========================
@@ -132,16 +113,28 @@
 ========================= */
 
 .cards-grid {
-
-  display:grid;
-
-  grid-template-columns:
-  repeat(auto-fit,minmax(280px,1fr));
-
-  gap:28px;
-
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
 }
 
+
+/* =========================
+   SIGNATURE RITUAL
+========================= */
+
+.signature-category .cards-grid {
+  grid-template-columns: 1fr;
+}
+
+
+/* =========================
+   ADD-ONS
+========================= */
+
+.addons-category .cards-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
 
 
 /* =========================
@@ -149,423 +142,330 @@
 ========================= */
 
 .service-card {
+  position: relative;
 
-  position:relative;
+  overflow: hidden;
 
-  overflow:hidden;
-
-  padding:35px 30px;
-
+  padding: 35px 30px;
 
   background:
-  rgba(255,255,255,.35);
+    rgba(255, 255, 255, 0.35);
 
+  backdrop-filter: blur(18px);
 
-  backdrop-filter:blur(18px);
+  border: 1px solid rgba(0, 0, 0, 0.06);
 
+  display: flex;
+  flex-direction: column;
 
-  border:1px solid rgba(0,0,0,.06);
+  min-height: 340px;
 
-
-  display:flex;
-
-  flex-direction:column;
-
-
-  min-height:420px;
-
-
-  opacity:0;
+  opacity: 0;
 
   transform:
-  translateY(25px)
-  scale(.98);
-
+    translateY(25px)
+    scale(0.98);
 
   animation:
-  cardIn .8s ease forwards;
-
+    cardIn 0.8s ease forwards;
 
   animation-delay:
-  calc(var(--i) * .08s);
-
+    calc(var(--i) * 0.08s);
 
   transition:
-  transform .45s ease,
-  box-shadow .45s ease;
-
-
+    transform 0.45s ease,
+    box-shadow 0.45s ease;
 }
-
 
 .service-card::before {
+  content: "";
 
-  content:"";
+  position: absolute;
 
-  position:absolute;
+  top: 0;
+  left: 0;
 
-  top:0;
-  left:0;
+  width: 100%;
+  height: 3px;
 
-  width:100%;
-  height:3px;
+  background: var(--accent_bright);
 
+  transform: scaleX(0);
 
-  background:var(--accent_bright);
+  transform-origin: left;
 
-
-  transform:scaleX(0);
-
-  transform-origin:left;
-
-  transition:.5s ease;
-
+  transition: 0.5s ease;
 }
-
-
 
 .service-card:hover::before {
-
-  transform:scaleX(1);
-
+  transform: scaleX(1);
 }
-
 
 
 @keyframes cardIn {
-
   to {
-
-    opacity:1;
+    opacity: 1;
 
     transform:
-    translateY(0)
-    scale(1);
-
+      translateY(0)
+      scale(1);
   }
-
 }
-
 
 
 .service-card:hover {
-
-  transform:
-  translateY(-10px);
-
+  transform: translateY(-10px);
 
   box-shadow:
-  0 25px 60px rgba(0,0,0,.12);
-
+    0 25px 60px rgba(0, 0, 0, 0.12);
 }
 
+
+/* =========================
+   SIGNATURE CARD
+========================= */
+
+.signature-category .service-card {
+  min-height: 300px;
+}
 
 
 /* =========================
    TITLE
 ========================= */
 
-
 .service-card h3 {
-
-  font-size:28px;
-
-  font-weight:300;
-
-  color:var(--text);
-
-  margin-bottom:18px;
-
+  font-size: 28px;
+  font-weight: 300;
+  color: var(--text);
+  margin-bottom: 18px;
 }
-
 
 
 /* =========================
    PRICE / TIME
 ========================= */
 
-
 .meta {
+  display: flex;
 
-  display:flex;
+  justify-content: space-between;
 
-  justify-content:space-between;
+  padding-bottom: 18px;
 
-
-  padding-bottom:18px;
-
-  margin-bottom:22px;
-
+  margin-bottom: 22px;
 
   border-bottom:
-  1px solid rgba(0,0,0,.08);
+    1px solid rgba(0, 0, 0, 0.08);
 
+  font-size: 18px;
 
-  font-size:18px;
-
-  color:var(--accent_bright);
-
+  color: var(--accent_bright);
 }
-
 
 
 /* =========================
    INCLUDED LIST
 ========================= */
 
-
 .includes-list {
+  list-style: none;
 
-  list-style:none;
+  padding: 0;
+  margin: 0;
 
-  padding:0;
-
-  margin:0;
   cursor: pointer;
-
 }
-
 
 .includes-list li {
+  position: relative;
 
-  position:relative;
+  padding-left: 24px;
 
-  padding-left:24px;
+  margin-bottom: 12px;
 
+  font-size: 19px;
 
-  margin-bottom:12px;
+  line-height: 1.35;
 
-
-  font-size:18px;
-
-  line-height:1.35;
-
-
-  color:var(--text);
-
+  color: var(--text);
 }
-
 
 .includes-list li::before {
+  content: "✓";
 
-  content:"✓";
+  position: absolute;
 
+  left: 0;
 
-  position:absolute;
+  color: var(--accent_bright);
 
-  left:0;
-
-
-  color:var(--accent_bright);
-
-
-  font-weight:600;
-
+  font-weight: 600;
 }
-
 
 
 /* =========================
    BOOK BUTTON
 ========================= */
 
-
 .category-book {
+  display: flex;
 
-  display:flex;
+  justify-content: center;
 
-  justify-content:center;
-
-  margin-top:35px;
-
+  margin-top: 35px;
 }
-
 
 
 .book-btn {
+  position: relative;
 
-  position:relative;
+  display: inline-flex;
 
+  align-items: center;
 
-  display:inline-flex;
+  justify-content: center;
 
-  align-items:center;
+  padding: 14px 35px;
 
-  justify-content:center;
+  text-decoration: none;
 
+  font-size: 13px;
 
-  padding:14px 35px;
+  font-weight: 700;
 
+  letter-spacing: 0.15em;
 
-  text-decoration:none;
+  text-transform: uppercase;
 
-
-  font-size:13px;
-
-  font-weight:700;
-
-
-  letter-spacing:.15em;
-
-
-  text-transform:uppercase;
-
-
-  color:white;
-
+  color: white;
 
   background:
-  linear-gradient(
-  135deg,
-  #aac4cb,
-  #8fb3ba
-  );
-
+    linear-gradient(
+      135deg,
+      #aac4cb,
+      #8fb3ba
+    );
 
   box-shadow:
-  0 12px 30px rgba(0,0,0,.12);
+    0 12px 30px rgba(0, 0, 0, 0.12);
 
-
-  transition:.45s ease;
-
+  transition: 0.45s ease;
 }
-
 
 
 .book-btn:hover {
-
-  transform:
-  translateY(-5px);
-
+  transform: translateY(-5px);
 
   box-shadow:
-  0 25px 60px rgba(0,0,0,.18);
-
+    0 25px 60px rgba(0, 0, 0, 0.18);
 }
-
 
 
 /* =========================
    GIFT
 ========================= */
 
-
 .gift-section {
+  margin-top: 120px;
 
-  margin-top:120px;
+  display: flex;
 
-  display:flex;
-
-  justify-content:center;
-
+  justify-content: center;
 }
-
 
 
 .gift-card {
+  width: 100%;
 
+  max-width: 520px;
 
-  width:100%;
+  padding: 50px 40px;
 
-  max-width:520px;
+  background: var(--accent_bright);
 
+  color: white;
 
-  padding:50px 40px;
-
-
-  background:var(--accent_bright);
-
-
-  color:white;
-
-
-  text-align:center;
-
+  text-align: center;
 }
-
 
 
 .gift-card h2 {
+  font-size: 36px;
 
-  font-size:36px;
+  font-weight: 300;
 
-  font-weight:300;
-
-  margin-bottom:15px;
-
+  margin-bottom: 15px;
 }
-
 
 
 .gift-card p {
+  opacity: 0.9;
 
-  opacity:.9;
-
-  margin-bottom:30px;
-
+  margin-bottom: 30px;
 }
 
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 1100px) {
+  .cards-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .addons-category .cards-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
 
 
 /* =========================
    MOBILE
 ========================= */
 
-
-@media(max-width:900px){
-
+@media (max-width: 900px) {
   .services-page {
-
-    padding:50px 5% 80px;
-
+    padding: 50px 5% 80px;
   }
-
 
   .cards-grid {
-
-    grid-template-columns:1fr;
-
+    grid-template-columns: 1fr;
   }
 
+  .addons-category .cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .signature-category .cards-grid {
+    grid-template-columns: 1fr;
+  }
 
   .service-card {
-
-    min-height:auto;
-
+    min-height: auto;
   }
-
 
   .category-title {
-
-    font-size:36px;
-
+    font-size: 36px;
   }
-
 }
 
 
+/* =========================
+   SMALL MOBILE
+========================= */
 
-@media(max-width:500px){
-
-
+@media (max-width: 500px) {
   .services-nav button {
-
-    width:100%;
-
+    width: 100%;
   }
-
 
   .service-card h3 {
-
-    font-size:24px;
-
+    font-size: 24px;
   }
-
 
   .includes-list li {
-
-    font-size:14px;
-
+    font-size: 14px;
   }
-
 }

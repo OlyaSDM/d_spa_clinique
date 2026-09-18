@@ -542,32 +542,7 @@ type Section = {
 };
 
 const sections: Section[] = [
-  {
-    id: "body",
-    title: "Body Treatments",
-    items: [
-      {
-        name: "Therapeutic Massage | 1h",
-        duration: "1 hr",
-        price: "$120",
-        bookingLink:
-          "  https://app.squareup.com/appointments/book/9jgdwijs8xlh94/L3SQ5QJV067N3/start",
-        includes: [
-          "A customized full-body massage designed to release tension, improve circulation, and promote deep relaxation. The treatment is tailored to your individual needs and includes soothing massage techniques for a complete body relaxation experience.",
-        ],
-      },
-      {
-        name: "Therapeutic Massage | 1h30",
-        duration: "1 hr 30 mins",
-        price: "$180",
-        bookingLink:
-          "https://book.squareup.com/appointments/9jgdwijs8xlh94/location/L3SQ5QJV067N3/services/EGJ7OQTQQX26Y6FYQXOBWRO6",
-        includes: [
-          "An extended therapeutic massage designed to provide deeper relaxation and more focused work on areas of tension. The additional time allows for a more comprehensive full-body experience tailored to your individual needs.",
-        ],
-      },
-    ],
-  },
+
 
   {
     id: "face",
@@ -669,7 +644,32 @@ const sections: Section[] = [
       },
     ],
   },
-
+  {
+    id: "body",
+    title: "Body Treatments",
+    items: [
+      {
+        name: "Therapeutic Massage | 1h",
+        duration: "1 hr",
+        price: "$120",
+        bookingLink:
+          "  https://app.squareup.com/appointments/book/9jgdwijs8xlh94/L3SQ5QJV067N3/start",
+        includes: [
+          "A customized full-body massage designed to release tension, improve circulation, and promote deep relaxation. The treatment is tailored to your individual needs and includes soothing massage techniques for a complete body relaxation experience.",
+        ],
+      },
+      {
+        name: "Therapeutic Massage | 1h30",
+        duration: "1 hr 30 mins",
+        price: "$180",
+        bookingLink:
+          "https://book.squareup.com/appointments/9jgdwijs8xlh94/location/L3SQ5QJV067N3/services/EGJ7OQTQQX26Y6FYQXOBWRO6",
+        includes: [
+          "An extended therapeutic massage designed to provide deeper relaxation and more focused work on areas of tension. The additional time allows for a more comprehensive full-body experience tailored to your individual needs.",
+        ],
+      },
+    ],
+  },
   {
     id: "signature",
     title: "Signature Ritual",

@@ -38,7 +38,7 @@ const observer = new IntersectionObserver(
 
 <a
   className="giftBtn"
-  href="https://squareup.com/gift/your-link-here"
+  href="https://app.squareup.com/gift/1QTAYX00HK6H8/order"
   target="_blank"
   rel="noreferrer"
 >

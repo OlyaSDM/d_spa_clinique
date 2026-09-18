@@ -73,12 +73,14 @@ export default function Hero() {
   <span>Restore</span>
   <span>Glow</span>
 </p>
-
           <div className="hero-btn-wrap">
-            <button className="hero-btn">
+            <a className="hero-btn"
+              href="https://book.squareup.com/appointments/9jgdwijs8xlh94/location/L3SQ5QJV067N3/services?utm_source=chatgpt.com"
+  target="_blank"
+  rel="noreferrer">
               Book now
               <span className="hero-btn-glow" />
-            </button>
+            </a>
           </div>
         </div>
       </div>

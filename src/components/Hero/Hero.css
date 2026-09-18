@@ -1,3 +1,5 @@
+/* #aac4cb */
+
 .hero {
   height: 100vh;
   position: relative;
@@ -48,7 +50,7 @@
 .letter {
   display: inline-block;
 
-  color: #aac4cb;
+  color: #80b2c0;
 
   transform: translateY(120%);
   opacity: 0;
@@ -209,7 +211,7 @@ color: var(--text);
   text-transform: uppercase;
 
   color: #fff;
-  background: linear-gradient(135deg, #aac4cb, #8fb3ba);
+  background: linear-gradient(135deg,  #80b2c0, #8fb3ba);
 
   border: none;
   cursor: pointer;
